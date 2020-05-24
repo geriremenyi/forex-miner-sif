@@ -1,6 +1,6 @@
 # forex-miner-sif
 
-Implementation of the frontend in the forex-miner application. The repo's name is coming from the Norse mythology, in which [Sif](https://en.wikipedia.org/wiki/Sif) is a goddess associated with Earth and the wife of the thunder god Thor.
+Frontend implementation for forex-miner.com. The repo's name is coming from the Norse mythology, in which [Sif](https://en.wikipedia.org/wiki/Sif) is a goddess associated with Earth and the wife of the thunder god Thor.
 
 ## Getting started
 
