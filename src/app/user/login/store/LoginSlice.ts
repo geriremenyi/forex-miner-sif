@@ -5,11 +5,11 @@ import { ActionName } from '~utilities/ActionName';
 
 import { ILoginState } from './ILoginState';
 
-export const loginInitialState: ILoginState = {
+const loginInitialState: ILoginState = {
     isUserLoggedIn: false
 }
 
-export const loginActionNames = {
+const loginActionNames = {
     LOGIN: new ActionName('LOGIN'),
     LOGOUT: new ActionName('LOGOUT'),
     REGISTER: new ActionName('REGISTER'),
@@ -28,4 +28,4 @@ export const loginSlice = createSlice({
             state.loggedInUser = undefined;
         }
     }
-})
+});
