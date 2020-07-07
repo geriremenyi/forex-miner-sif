@@ -1,4 +1,4 @@
 export interface IAuthentication {
-    emailAddress: string;
-    password: string;
+  emailAddress: string
+  password: string
 }
