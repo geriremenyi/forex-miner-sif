@@ -1,0 +1,12 @@
+{
+    "compilerOptions": {
+        "baseUrl": "./",
+        "paths": {
+          "~app/*": ["src/app/*"],
+          "~components/*": ["src/components/*"],
+          "~store/*": ["src/store/*"],
+          "~utilities/*": ["src/utilities/*"],
+          "~/*": ["src/*"]
+        }
+    }
+}
