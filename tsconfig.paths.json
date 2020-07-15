@@ -6,6 +6,7 @@
           "~components/*": ["src/components/*"],
           "~store/*": ["src/store/*"],
           "~utilities/*": ["src/utilities/*"],
+          "~api/*": ["src/common/api/*"],
           "~/*": ["src/*"]
         }
     }
