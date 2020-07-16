@@ -1,4 +1,4 @@
-export type { IServerApi } from './IServerApi';
-export { ServerApi } from './ServerApi';
-export { MockServerApi } from './MockServerApi';
-export { ServerApiFactory } from './ServerApiFactory';
+export type { IApiClient } from './IApiClient';
+export { HttpApiClient } from './HttpApiClient';
+export { MockApiClient } from './MockApiClient';
+export { ApiClientFactory } from './ApiClientFactory';
