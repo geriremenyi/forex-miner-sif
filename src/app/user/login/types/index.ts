@@ -1,1 +1,1 @@
-export type { IAuthentication } from './IAuthentication';
+export type { IAuthentication } from './IAuthentication'
