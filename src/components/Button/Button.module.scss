@@ -1,0 +1,28 @@
+@use 'src/common/style/colors' as colors;
+
+button {
+    outline: none;
+    border: none;
+    text-decoration: none;
+    cursor: pointer;
+    text-align: center;
+    padding: 0 16px;
+    height: 40px;
+    min-height: 40px;
+    max-height: 40px;
+    line-height: 40px;
+    border-radius: 4px;
+    transition: 0.3s;
+
+    &.primary {
+        @include colors.primaryBackground;
+
+        &:hover {
+            @include colors.primaryDarkBackground;
+        }
+
+        &:active {
+            @include colors.primaryDeepDarkBackground;
+        }
+    }
+}
