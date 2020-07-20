@@ -1,6 +1,8 @@
-@use 'src/common/style/colors' as colors;
+@use 'src/common/style/theme' as theme;
 
 button {
+    display: block;
+    margin: auto;
     outline: none;
     border: none;
     text-decoration: none;
@@ -15,14 +17,15 @@ button {
     transition: 0.3s;
 
     &.primary {
-        @include colors.primaryBackground;
+        @include theme.color-it(theme.$prop-background-color, theme.$color-primary);
+        @include theme.color-it(theme.$prop-color, theme.$color-primary-text);
 
         &:hover {
-            @include colors.primaryDarkBackground;
+            @include theme.color-it(theme.$prop-background-color, theme.$color-primary-dark);
         }
 
         &:active {
-            @include colors.primaryDeepDarkBackground;
+            @include theme.color-it(theme.$prop-background-color, theme.$color-primary-deep-dark);
         }
     }
 }

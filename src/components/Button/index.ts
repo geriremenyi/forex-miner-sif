@@ -1,3 +1,4 @@
+/* istanbul ignore file */
 export { Button } from './Button';
-export { ButtonType } from './ButtonType';
+export { ButtonDecoration } from './ButtonDecoration';
 export type { IButtonProps } from './IButtonProps';

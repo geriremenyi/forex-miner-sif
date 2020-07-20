@@ -1,22 +1,12 @@
 /* istanbul ignore file */
-import { ButtonType } from '.';
+import { ButtonDecoration } from '.';
 
 /**
  * Button component properties
  */
-export interface IButtonProps {
+export interface IButtonProps extends React.HTMLAttributes<HTMLButtonElement> {
     /**
-     * Textual label on the button
+     * How to decorate the button
      */
-    label: string;
-
-    /**
-     * Function to run on click
-     */
-    onClick: () => void;
-
-    /**
-     * Type of the button
-     */
-    type?: ButtonType;
+    decoration?: ButtonDecoration;
 }
