@@ -1,3 +1,4 @@
+/* istanbul ignore file */
 /**
  * Button decoration types
  */
