@@ -1,10 +1,10 @@
 import { Observable } from 'rxjs';
 
-import { IHttpClient } from "~api/http";
-import { IAuthentication } from "~app/user/login/types";
-import { IUser } from "~app/user/shared/types";
+import { IHttpClient } from '~api/http';
+import { IAuthentication } from '~app/user/login/types';
+import { IUser } from '~app/user/shared/types';
 
-import { IApiClient } from ".";
+import { IApiClient } from '.';
 
 /**
  * An {@link IApiClient} which actually connects to the API via HTTP REST calls.
@@ -27,7 +27,7 @@ export class HttpApiClient implements IApiClient {
      * Getting the root URL via concatenating the base url and API version
      */
     public get API_FULL_URL(): string {
-        return `${this.API_URL}/${this.API_VERSION}`;
+      return `${this.API_URL}/${this.API_VERSION}`;
     } 
 
     /**
@@ -35,7 +35,7 @@ export class HttpApiClient implements IApiClient {
      * 
      * @param httpClient The {@link IHttpClient} instance to be able to fetch data.
      */
-    constructor(private httpClient: IHttpClient) {};
+    constructor(private httpClient: IHttpClient) {}
 
     /**
      * Login via calling the corresponding REST API endpoint.
@@ -44,9 +44,9 @@ export class HttpApiClient implements IApiClient {
      * @returns {@link https://rxjs-dev.firebaseapp.com/guide/observable | Observable} which emmits the logged in user details on successful login.
      */
     public login(auth: IAuthentication): Observable<IUser> {
-        // TODO: actual implementation
-        // PREREQ: IHttpClient final interface
-        throw new Error("Method not implemented.");
+      // TODO: actual implementation
+      // PREREQ: IHttpClient final interface
+      throw new Error('Method not implemented.');
     }
 
 }
