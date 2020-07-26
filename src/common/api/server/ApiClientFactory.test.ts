@@ -1,38 +1,37 @@
 import { ApplicationEnvironment } from "~utilities/types";
 
-import { ServerApi, ServerApiFactory, MockServerApi } from ".";
+import { HttpApiClient, MockApiClient, ApiClientFactory } from ".";
 
-describe(ServerApiFactory.name, () => {
-    describe(ServerApiFactory.getServerApi.name, () => {
+describe(ApiClientFactory.name, () => {
+    describe('getServerApi', () => {
         it('should create MockServerApi instance if development environment is passed', () => {
             // Arrange
-
     
             // Act
-            const apiServer = ServerApiFactory.getServerApi(ApplicationEnvironment.Development);
+            const apiServer = ApiClientFactory.getServerApi(ApplicationEnvironment.Development);
     
             // Assert
-            expect(apiServer).toBeInstanceOf(MockServerApi);
+            expect(apiServer).toBeInstanceOf(MockApiClient);
         });
     
         it('should create MockServerApi instance if test environment is passed', () => {
             // Arrange
 
             // Act
-            const apiServer = ServerApiFactory.getServerApi(ApplicationEnvironment.Test);
+            const apiServer = ApiClientFactory.getServerApi(ApplicationEnvironment.Test);
     
             // Assert
-            expect(apiServer).toBeInstanceOf(MockServerApi);
+            expect(apiServer).toBeInstanceOf(MockApiClient);
         });
     
         it('should create ServerApi instance if prodution environment is passed', () => {
             // Arrange
     
             // Act
-            const apiServer = ServerApiFactory.getServerApi(ApplicationEnvironment.Production);
+            const apiServer = ApiClientFactory.getServerApi(ApplicationEnvironment.Production);
     
             // Assert
-            expect(apiServer).toBeInstanceOf(ServerApi);
+            expect(apiServer).toBeInstanceOf(HttpApiClient);
         });
 
         it('should create fallback to process.env.NODE_ENV and decide based on that if no value was provided', () => {
@@ -40,13 +39,13 @@ describe(ServerApiFactory.name, () => {
             const environment = process.env.NODE_ENV as ApplicationEnvironment;
     
             // Act
-            const apiServer = ServerApiFactory.getServerApi();
+            const apiServer = ApiClientFactory.getServerApi();
     
             // Assert
             if(environment === ApplicationEnvironment.Production) {
-                expect(apiServer).toBeInstanceOf(ServerApi);
+                expect(apiServer).toBeInstanceOf(HttpApiClient);
             } else {
-                expect(apiServer).toBeInstanceOf(MockServerApi);
+                expect(apiServer).toBeInstanceOf(MockApiClient);
             }
         });
     });
