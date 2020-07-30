@@ -1,10 +1,33 @@
 import React from 'react';
-import { RouteProps, Route, Redirect } from 'react-router-dom';
+import { Redirect, Route, RouteProps } from 'react-router-dom';
 
-export const PrivateRoute = (routeProps : RouteProps): React.ReactElement<RouteProps> => {
+/**
+ * Private route component.
+ * 
+ * This component acts exactly like the Route component
+ * but it hides the corresponding route component behind
+ * an authentication check, and redirects everything to 
+ * the login page if user is not logged in
+ */
+export class PrivateRoute extends React.Component<RouteProps> {
 
-  // TODO: from state
-  const isUserLoggedIn = (): boolean => false;
+	public constructor(props: RouteProps) {
+		super(props);
 
-  return isUserLoggedIn() ? <Route {...routeProps} /> :  <Redirect to={{ pathname: '/login' }} />;
-};
+		this.isUserLoggedIn = this.isUserLoggedIn.bind(this);
+	}
+
+	public render(): React.ReactElement {
+		return (
+			this.isUserLoggedIn() ? 
+				<Route {...this.props} /> :  
+				<Redirect to='/login' />
+		);
+	}
+
+	private isUserLoggedIn(): boolean {
+		// TODO: from global state
+		return false;
+	}
+
+}
