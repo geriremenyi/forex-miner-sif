@@ -14,6 +14,8 @@ export class Graph extends React.Component<IGraphProps> {
 
 	/**
 	 * Render component
+	 * 
+	 * @returns The rendered react node
 	 */
 	public render(): React.ReactNode {
 		return (
