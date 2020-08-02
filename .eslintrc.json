@@ -22,7 +22,10 @@
     "rules": {
         "indent": [
             "error",
-            2
+            "tab",
+            {
+                "SwitchCase": 1
+            }
         ],
         "linebreak-style": [
             "error",

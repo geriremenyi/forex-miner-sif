@@ -3,11 +3,14 @@
         "baseUrl": "./",
         "paths": {
           "~app/*": ["src/app/*"],
-          "~components/*": ["src/components/*"],
-          "~store/*": ["src/store/*"],
-          "~utilities/*": ["src/utilities/*"],
+          "~user/*": ["src/app/user/*"],
+          "~login/*": ["src/app/user/login/*"],
+          "~common/*": ["src/common/*"],
           "~api/*": ["src/common/api/*"],
-          "~/*": ["src/*"]
+          "~router/*": ["src/common/router/*"],
+          "~utilities/*": ["src/common/utilities/*"],
+          "~components/*": ["src/components/*"],
+          "~store": ["src/store"]
         }
     }
 }
