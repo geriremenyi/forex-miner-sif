@@ -1,19 +1,19 @@
 import { configureStore, getDefaultMiddleware } from '@reduxjs/toolkit';
 import { createEpicMiddleware } from 'redux-observable';
+import { routerMiddleware } from 'connected-react-router';
 
-import { rootReducer } from './RootReducer';
 import { ApplicationEnvironment } from '~utilities/types';
 
-// Reducer
-const reducer = rootReducer;
+import { history, rootReducer } from '.';
 
 // Middlewares
+const routeMiddleware = routerMiddleware(history);
 const epicMiddleware = createEpicMiddleware();
-const middleware = [...getDefaultMiddleware(), epicMiddleware];
+const middlewares = [...getDefaultMiddleware(), routeMiddleware, epicMiddleware];
 
 // Configure store
 export const store = configureStore({
-  reducer,
-  middleware,
-  devTools: (process.env.NODE_ENV as ApplicationEnvironment) !== ApplicationEnvironment.Production,
+	reducer: rootReducer,
+	middleware: middlewares,
+	devTools: (process.env.NODE_ENV as ApplicationEnvironment) !== ApplicationEnvironment.Production,
 });
