@@ -2,11 +2,11 @@
     "compilerOptions": {
         "baseUrl": "./",
         "paths": {
+          "~api/*": ["src/api/*"],
           "~app/*": ["src/app/*"],
           "~user/*": ["src/app/user/*"],
           "~login/*": ["src/app/user/login/*"],
           "~common/*": ["src/common/*"],
-          "~api/*": ["src/common/api/*"],
           "~router/*": ["src/common/router/*"],
           "~utilities/*": ["src/common/utilities/*"],
           "~components/*": ["src/components/*"],
