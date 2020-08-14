@@ -2,7 +2,7 @@ import { configureStore, getDefaultMiddleware } from '@reduxjs/toolkit';
 import { createEpicMiddleware } from 'redux-observable';
 import { routerMiddleware } from 'connected-react-router';
 
-import { ApplicationEnvironment } from '~utilities/types';
+import { ApplicationEnvironment } from '~common/types';
 
 import { history, rootReducer } from '.';
 
