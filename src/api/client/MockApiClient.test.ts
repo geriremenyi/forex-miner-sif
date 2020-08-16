@@ -1,4 +1,4 @@
-import { IAuthentication } from '~app/user/login/types';
+import { IAuthentication } from '~api/models/user';
 
 import { IApiClient, MockApiClient } from '.';
 
