@@ -1,5 +1,5 @@
-@use 'src/common/style/theme' as theme;
-@use 'src/common/style/spacing' as spacing;
+@use 'src/style/theme' as theme;
+@use 'src/style/spacing' as spacing;
 
 // SCSS variables exposed to the react component
 :export {

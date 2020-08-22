@@ -2,7 +2,7 @@ import React from 'react';
 import { IconContext } from 'react-icons';
 import { BsFillEyeFill, BsFillEyeSlashFill } from 'react-icons/bs';
 
-import { generateRandomId } from '~utilities/functions';
+import { generateRandomId } from '~common/functions/misc';
 
 import { FormFieldType, IFormFieldProps, IFormFieldState } from '.';
 
