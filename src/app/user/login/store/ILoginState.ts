@@ -1,4 +1,4 @@
-import { IUser } from '~app/user/shared/types';
+import { IUser } from '~api/models/user';
 
 export interface ILoginState {
   isUserLoggedIn: boolean
