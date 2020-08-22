@@ -1,0 +1,72 @@
+/********************
+ ********************
+ ** GLOBAL STYLING **
+ ********************
+ ********************/
+@use 'src/style/theme' as theme;
+@use 'src/style/spacing' as spacing;
+@use 'src/style/grid' as grid;
+
+//////////
+// Main //
+//////////
+html {
+  box-sizing: border-box;
+  -ms-overflow-style: scrollbar;
+
+  *,
+  *::before,
+  *::after {
+    box-sizing: inherit;
+  }
+
+  body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    min-height: 100vh;
+    @include theme.color-it(theme.$prop-background-color, theme.$color-background);
+    @include theme.color-it(theme.$prop-color, theme.$color-text);
+  }
+
+  body.rtl {
+    direction: rtl;
+  }
+}
+
+/////////////
+// Spacing //
+/////////////
+@include spacing.generate-spacing-classes();
+
+//////////
+// Grid //
+//////////
+.container-fluid {
+  width: 100%;
+  @include grid.generate-container-properties();
+}
+
+.container-fixed {
+  position: fixed;
+  @include grid.generate-container-properties();
+}
+
+.row {
+  @include grid.generate-row-properties();
+}
+
+@include grid.generate-cols();
+
+.row-start {
+  align-items: flex-start;
+}
+
+.row-center {
+  align-items: center;
+}
+
+.row-end {
+  align-items: flex-end;
+}
