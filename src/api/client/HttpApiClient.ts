@@ -1,8 +1,7 @@
 import { Observable } from 'rxjs';
 
-import { IHttpClient } from 'src/api/http';
-import { IAuthentication } from '~app/user/login/types';
-import { IUser } from '~app/user/shared/types';
+import { IHttpClient } from '~api/http';
+import { IAuthentication, IUser } from '~api/models/user';
 
 import { IApiClient } from '.';
 

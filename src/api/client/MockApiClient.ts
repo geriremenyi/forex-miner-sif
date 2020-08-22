@@ -1,7 +1,6 @@
 import { Observable, of, throwError } from 'rxjs';
 
-import { IAuthentication } from '~app/user/login/types';
-import { IUser } from '~app/user/shared/types';
+import { IAuthentication, IUser } from '~api/models/user';
 
 import { IApiClient } from '.';
 
