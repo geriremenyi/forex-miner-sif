@@ -1,5 +1,5 @@
 import { HttpClient } from 'src/api/http';
-import { ApplicationEnvironment } from '~utilities/types';
+import { ApplicationEnvironment } from '~common/types';
 
 import { HttpApiClient, IApiClient, MockApiClient } from '.';
 
