@@ -37,6 +37,8 @@ export class FormField extends React.Component<IFormFieldProps, IFormFieldState>
 
 	/**
 	 * Component render
+	 * 
+	 * @returns The rendered react node
 	 */
 	public render(): React.ReactNode {
 		return (
