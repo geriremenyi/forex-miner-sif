@@ -1,0 +1,31 @@
+.loginContainer {
+    width: 100%;
+    height: 100%;
+
+    &.hiddenContainer {
+        z-index: -1;
+    }
+
+    .loginRow {
+        height: 100%;
+        overflow: hidden;
+
+        .loginWrapperContainer {
+            width: 100%;
+            transition: visibility 500ms ease-out 500ms, opacity 800ms ease-out, margin-left 1s ease-out;
+
+            .loginWrapper {
+                width: 100%;
+                max-width: 400px;
+                margin: auto;
+                text-align: center;
+            }
+
+            &.slideOut {
+                visibility: hidden;
+                opacity: 0;
+                margin-left: 200px;
+            }
+        }
+    }
+}
