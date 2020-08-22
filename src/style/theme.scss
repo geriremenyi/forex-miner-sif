@@ -1,0 +1,77 @@
+///////////////
+// Variables //
+///////////////
+
+// Themes
+$light: 'light';
+$dark: 'dark';
+
+// Color names
+$color-background: 'colorBackground';
+$color-text: 'colorText';
+$color-primary: 'colorPrimary';
+$color-primary-dark: 'colorPrimaryDark';
+$color-primary-deep-dark: 'colorPrimaryDeepDark';
+$color-primary-text: 'colorPrimaryText';
+$color-input-background: 'colorInputBackground';
+$color-input-border: 'colorInputBorder';
+$color-login-side-panel: 'colorLoginSidePanel';
+$color-login-side-panel-text: 'colorLoginSidePanelText';
+$color-login-side-panel-button: 'colorLoginSidePanelButton';
+$color-login-side-panel-button-text: 'colorLoginSidePanelButtonText';
+
+// Colorable properties
+$prop-background-color: 'background-color';
+$prop-color: 'color';
+$prop-border-color: 'border-color';
+
+// Colors per theme
+$theme-colors: (
+    $light: (
+        $color-background: #F1F5F9,
+        $color-text: #27303F,
+        $color-primary: #4285F4,
+        $color-primary-dark: #3A76F8,
+        $color-primary-deep-dark: #3367BD,
+        $color-primary-text: #F0F5FF,
+        $color-input-background: #FFFFFF,
+        $color-input-border: #CFD8E3,
+        $color-login-side-panel: #4285F4,
+        $color-login-side-panel-text: #F0F5FF,
+        $color-login-side-panel-button: #F1F5F9,
+        $color-login-side-panel-button-text: #27303F
+    ),
+    $dark: (
+        $color-background: #1A202E,
+        $color-text: #FFFFFF,
+        $color-primary: #4285F4,
+        $color-primary-dark: #3A76F8,
+        $color-primary-deep-dark: #3367BD,
+        $color-primary-text: #F0F5FF,
+        $color-input-background: rgba(0, 0, 0, .05),
+        $color-input-border: #64748B,
+        $color-login-side-panel: #27303F,
+        $color-login-side-panel-text: #FFFFFF,
+        $color-login-side-panel-button: #4285F4,
+        $color-login-side-panel-button-text: #F0F5FF
+    )
+);
+
+////////////
+// Mixins //
+////////////
+
+// Set theme specific properties
+@mixin color-it($property, $color) {
+    $light-color: map-get(map-get($theme-colors, $light), $color);
+    @if $light-color {
+        #{$property}: $light-color;
+    }
+
+    $dark-color: map-get(map-get($theme-colors, $dark), $color);
+    @if $dark-color {
+        @media(prefers-color-scheme: dark) {
+            #{$property}: $dark-color;
+        }
+    }
+}
