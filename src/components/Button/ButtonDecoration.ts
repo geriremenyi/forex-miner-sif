@@ -1,4 +1,7 @@
-export enum ButtonType {
+/**
+ * Button decoration types
+ */
+export enum ButtonDecoration {
     /**
      * Primary button type using primary color
      */
