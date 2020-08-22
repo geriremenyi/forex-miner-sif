@@ -11,12 +11,22 @@ import { Redirect, Route, RouteProps } from 'react-router-dom';
  */
 export class PrivateRoute extends React.Component<RouteProps> {
 
+	/**
+	 * Component initialization
+	 * 
+	 * @param props Route properties
+	 */
 	public constructor(props: RouteProps) {
 		super(props);
 
 		this.isUserLoggedIn = this.isUserLoggedIn.bind(this);
 	}
 
+	/**
+	 * Component render
+	 * 
+	 * @returns The react element rendered
+	 */
 	public render(): React.ReactElement {
 		return (
 			this.isUserLoggedIn() ? 
@@ -25,6 +35,11 @@ export class PrivateRoute extends React.Component<RouteProps> {
 		);
 	}
 
+	/**
+	 * Is there a logged in user or not
+	 * 
+	 * @returns Is there a logged in user
+	 */
 	private isUserLoggedIn(): boolean {
 		// TODO: from global state
 		return false;
