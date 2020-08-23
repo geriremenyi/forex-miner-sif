@@ -7,20 +7,20 @@ import { ILoginPageProps } from '../page/ILoginPageProps';
 
 // Store state to props mapper
 const mapStateToProps = (state: IRootState): ILoginPageProps => {
-	const props: ILoginPageProps = {
-		activeForm: ActiveForm.LoginForm
-	};
+    const props: ILoginPageProps = {
+        activeForm: ActiveForm.LoginForm
+    };
 
-	switch (getRouterPath(state)) {
-		case '/register':
-			props.activeForm = ActiveForm.RegisterForm;
-			break;
-		case '/login':
-		default:
-			props.activeForm = ActiveForm.LoginForm;
-	}
+    switch (getRouterPath(state)) {
+        case '/register':
+            props.activeForm = ActiveForm.RegisterForm;
+            break;
+        case '/login':
+        default:
+            props.activeForm = ActiveForm.LoginForm;
+    }
     
-	return props;
+    return props;
 };
 
 // Container

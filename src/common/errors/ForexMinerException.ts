@@ -1,9 +1,9 @@
 export class ForexMinerException{
 
-	private message: string;
+    private message: string;
 
-	constructor(message?: string) {
-		this.message = message ?? '';
-	}
+    constructor(message?: string) {
+        this.message = message ?? '';
+    }
 
 }
