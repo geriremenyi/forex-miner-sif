@@ -1,24 +1,24 @@
 export class ActionName {
 
-	private readonly _actionName: string
+    private readonly _actionName: string
 
-	constructor(name: string) {
-		this._actionName = `${name}`;
-	}
+    constructor(name: string) {
+        this._actionName = `${name}`;
+    }
 
-	get START(): string {
-		return `${this._actionName}/START`;
-	}
+    get START(): string {
+        return `${this._actionName}/START`;
+    }
 
-	get SUCCESS(): string {
-		return `${this._actionName}/SUCCESS`;
-	}
+    get SUCCESS(): string {
+        return `${this._actionName}/SUCCESS`;
+    }
 
-	get ERROR(): string {
-		return `${this._actionName}/ERROR`;
-	}  
+    get ERROR(): string {
+        return `${this._actionName}/ERROR`;
+    }  
 
-	get CANCEL(): string {
-		return `${this._actionName}/CANCEL`;
-	}
+    get CANCEL(): string {
+        return `${this._actionName}/CANCEL`;
+    }
 }

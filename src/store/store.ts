@@ -13,7 +13,7 @@ const middlewares = [...getDefaultMiddleware(), routeMiddleware, epicMiddleware]
 
 // Configure store
 export const store = configureStore({
-	reducer: rootReducer,
-	middleware: middlewares,
-	devTools: (process.env.NODE_ENV as ApplicationEnvironment) !== ApplicationEnvironment.Production,
+    reducer: rootReducer,
+    middleware: middlewares,
+    devTools: (process.env.NODE_ENV as ApplicationEnvironment) !== ApplicationEnvironment.Production,
 });

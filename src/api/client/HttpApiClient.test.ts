@@ -5,23 +5,23 @@ import { IHttpClient } from 'src/api/http';
 
 describe(HttpApiClient.name, () => {
 
-	let httpClient: IHttpClient;
-	let httpApiClient: IApiClient;
+    let httpClient: IHttpClient;
+    let httpApiClient: IApiClient;
 
-	beforeEach(() => {
-		httpClient = mock<IHttpClient>();
-		httpApiClient = new HttpApiClient(httpClient);
-	});
+    beforeEach(() => {
+        httpClient = mock<IHttpClient>();
+        httpApiClient = new HttpApiClient(httpClient);
+    });
 
-	describe('login', () => {
-		it('should return user details on successful login', () => {
-			// Arrange
+    describe('login', () => {
+        it('should return user details on successful login', () => {
+            // Arrange
 
-			// Act
+            // Act
 
-			// Assert
-			// TODO
-			expect(httpApiClient.login).toThrowError();
-		});
-	});
+            // Assert
+            // TODO
+            expect(httpApiClient.login).toThrowError();
+        });
+    });
 });
