@@ -21,7 +21,7 @@ export class LoginRegisterSwitch extends React.Component<ILoginRegisterSwitchPro
                     <Graph>
                         <div className={`row row-center ${styles.switchPanelRow}`}>
                             <div className={`${styles.switchWrapper} padding-xl`}>
-                                <Button onClick={this.props.onSwitchButtonClick}>{isLoginFormActive(this.props.activeForm) ? 'Sign Up' : 'Log In'}</Button>
+                                <Button className={styles.fullWidthButton} onClick={this.props.onSwitchButtonClick}>{isLoginFormActive(this.props.activeForm) ? 'Sign Up' : 'Log In'}</Button>
                             </div>
                         </div>
                     </Graph>
@@ -29,8 +29,8 @@ export class LoginRegisterSwitch extends React.Component<ILoginRegisterSwitchPro
                 <div className={`${styles.switchTextWrapperContainer} ${isLoginFormActive(this.props.activeForm) ? styles.showLogin : ''} ${isRegisterFormActive(this.props.activeForm) ? styles.showRegister : ''} ${this.props.isColdLoad ? styles.coldLoad : ''}`}>
                     <div className={`${styles.switchTextWrapper} ${styles.loginTextWrapper}`}>
                         <div className={`${styles.switchTextContentHideable} ${isLoginFormActive(this.props.activeForm) ? styles.switchTextContentHidden : ''}`}>
-                            <h1>Already have an account?</h1>
-                            <p>Great news. Log in and continue to watch your account growing. We missed you!</p>
+                            <h1>Have an account?</h1>
+                            <p>Great news. Log in and continue to watch your account growing.</p>
                         </div>
                     </div>
                 </div>

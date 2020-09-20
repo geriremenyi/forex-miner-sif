@@ -14,6 +14,10 @@
         .switchWrapper {
             width: 100%;
             padding-top: 160px;
+
+            .fullWidthButton {
+                width: 100%;
+            }
         }
     }
 
@@ -63,7 +67,7 @@
     }
 
     .switchTextWrapper {
-        width: 400px;
+        width: 350px;
         margin: auto;
 
         &.loginTextWrapper {

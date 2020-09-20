@@ -1,9 +1,9 @@
-import { LoginPage } from '../page/LoginPage';
+import { LoginPage } from './LoginPage';
 import { connect } from 'react-redux';
 import { ActiveForm } from '~app/user/login/shared/types';
 import { IRootState } from '~store';
 import { getRouterPath } from '~common/functions/router/getRouterPath';
-import { ILoginPageProps } from '../page/ILoginPageProps';
+import { ILoginPageProps } from './ILoginPageProps';
 
 // Store state to props mapper
 const mapStateToProps = (state: IRootState): ILoginPageProps => {
