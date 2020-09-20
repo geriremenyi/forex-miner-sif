@@ -1,5 +1,5 @@
 import React from 'react';
-import { MdEmail } from 'react-icons/md';
+import { MdEmail, MdLock, MdPerson } from 'react-icons/md';
 
 import { FormField, FormFieldType } from '~components/FormField';
 
@@ -20,27 +20,31 @@ export class RegisterForm extends React.Component<IRegisterFormProps> {
                             <div className={styles.registerWrapper}>
                                 <h1>Create Free Account</h1>
                                 <div className='container-fluid'>
-                                    <div className='row row-center'>
-                                        <div className={'col-lg-6'}>
-                                            <FormField type={FormFieldType.Email} label='Email' icon={<MdEmail />}/>
+                                    <form>
+                                        <div className='row row-center'>
+                                            <div className={'col-lg-6'}>
+                                                <FormField type={FormFieldType.Text} label='Firstname' icon={<MdPerson />}/>
+                                            </div>
+                                            <div className={'col-lg-6'}>
+                                                <FormField type={FormFieldType.Text} label='Lastname' icon={<MdPerson />}/>
+                                            </div>
                                         </div>
-                                        <div className={'col-lg-6'}>
-                                            <FormField type={FormFieldType.Email} label='Email' icon={<MdEmail />}/>
+                                        <div className='row row-center'>
+                                            <div className={'col-lg-6'}>
+                                                <FormField type={FormFieldType.Email} label='Email' icon={<MdEmail />}/>
+                                            </div>
+                                            <div className={'col-lg-6'}>
+                                                <FormField type={FormFieldType.Password} label='Password' icon={<MdLock />}/>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div className='row row-center'>
-                                        <div className={'col-lg-6'}>
-                                            <FormField type={FormFieldType.Email} label='Email' icon={<MdEmail />}/>
+                                        <div className='row row-center'>
+                                            <div className={'col-lg-12'}>
+                                                <div className={styles.registerButtonWrapper}>
+                                                    <Button className={styles.registerButton}>Register</Button>
+                                                </div>
+                                            </div>
                                         </div>
-                                        <div className={'col-lg-6'}>
-                                            <FormField type={FormFieldType.Email} label='Email' icon={<MdEmail />}/>
-                                        </div>
-                                    </div>
-                                    <div className='row row-center'>
-                                        <div className={'col-lg-12'}>
-                                            <Button>Register</Button>
-                                        </div>
-                                    </div>
+                                    </form>
                                 </div>
                             </div>
                         </div>

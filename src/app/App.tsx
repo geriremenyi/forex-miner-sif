@@ -5,7 +5,7 @@ import { ConnectedRouter } from 'connected-react-router';
 
 import { PrivateRoute } from '~components/PrivateRoute/PrivateRoute';
 import { history, store } from '~store';
-import { LoginPageContainer } from './user/login/store/LoginPageContainer';
+import { LoginPageContainer } from './user/login/page/LoginPageContainer';
 
 export const App: React.FunctionComponent = () => {
     return ( 

@@ -5,14 +5,19 @@ import { FormField, FormFieldType } from '~components/FormField';
 
 import { ILoginFormProps } from '.';
 
-import styles from './LoginForm.module.scss';
 import { isLoginFormActive } from '../../shared/functions';
 import { Button } from '~components/Button';
+import { store } from '~store';
+
+import styles from './LoginForm.module.scss';
+import { loginActions } from '../../redux';
 
 export class LoginForm extends React.Component<ILoginFormProps> {
 
     public constructor(props: ILoginFormProps) {
         super(props);
+
+        this.onLoginFormSubmit = this.onLoginFormSubmit.bind(this);
     }
 
     public render(): React.ReactNode {
@@ -23,9 +28,13 @@ export class LoginForm extends React.Component<ILoginFormProps> {
                         <div className={`${styles.loginWrapperContainer} ${!isLoginFormActive(this.props.activeForm) ? styles.slideOut : ''}`} >
                             <div className={styles.loginWrapper}>
                                 <h1>Login To Yout Account</h1>
-                                <FormField type={FormFieldType.Email} label='Email' icon={<MdEmail />}/>
-                                <FormField type={FormFieldType.Password} label='Password' icon={<MdLock />}/>
-                                <Button>Login</Button>
+                                <form onSubmit={this.onLoginFormSubmit}>
+                                    <FormField type={FormFieldType.Email} label='Email' icon={<MdEmail />}/>
+                                    <FormField type={FormFieldType.Password} label='Password' icon={<MdLock />}/>
+                                    <div className={styles.loginButtonWrapper}>
+                                        <Button className={styles.loginButton} type="submit">Login</Button>
+                                    </div>
+                                </form>
                             </div>
                         </div>
                     </div>
@@ -34,4 +43,13 @@ export class LoginForm extends React.Component<ILoginFormProps> {
         );
     }
 
+    private onLoginFormSubmit(event: React.FormEvent) {        
+        // Send the login data
+        store.dispatch(loginActions.loginStart({
+            emailAddress: "test@test.com",
+            password: "testIng9"
+        }));
+
+        event.preventDefault();
+    }
 }
