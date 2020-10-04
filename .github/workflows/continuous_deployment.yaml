@@ -1,14 +1,17 @@
 name: Continuous Integration
-on: [pull_request]
+on:
+  push:
+    branches:
+      - master
 jobs:
   lint:
     name: Check lint
     runs-on: ubuntu-latest
     steps:
-      - name: Setup node 12
+      - name: Setup node 14
         uses: actions/setup-node@v1
         with:
-          node-version: 12
+          node-version: 14
 
       - name: Checkout
         uses: actions/checkout@v2
@@ -88,3 +91,23 @@ jobs:
 
       - name: Build
         run: npm run build
+  release:
+    name: Tag and release
+    needs: [lint, test, build]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Create Release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          VERSION: 
+        with:
+          tag_name: v0.0.1 # TODO
+          release_name: v0.0.1 # TODO
+          draft: false
+          prerelease: false
+  dockerize:
+    name: Dockerize and publish
