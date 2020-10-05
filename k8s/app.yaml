@@ -1,0 +1,24 @@
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: forex-miner-sif
+  namespace: forex-miner
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: forex-miner-sif
+  template:
+    metadata:
+      labels:
+        app: forex-miner-sif
+    spec:
+      containers:
+        - name: forex-miner-sif
+          image: ghcr.io/geriremenyi/forex-miner-sif:latest
+          ports:
+            - containerPort: 80
+      imagePullSecrets:
+        - name: ghcr-secret
+      nodeSelector:
+        agentpool: fmnpfe
