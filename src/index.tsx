@@ -1,10 +1,11 @@
+// Library dependencies
 import React from 'react';
 import ReactDOM from 'react-dom';
 
+// Local dependencies
 import { App } from '~app/App';
 
-import * as serviceWorker from './serviceWorker';
-
+// SASS module
 import './index.scss';
 
 ReactDOM.render(
@@ -13,6 +14,3 @@ ReactDOM.render(
     </React.StrictMode>,
     document.getElementById('root')
 );
-
-// TODO: enable service worker when everything is ready
-serviceWorker.unregister();
