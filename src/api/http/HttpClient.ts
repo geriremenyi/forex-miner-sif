@@ -1,29 +1,60 @@
-import { Observable } from 'rxjs';
-import { AjaxResponse } from 'rxjs/ajax';
+import { Observable, pipe } from 'rxjs';
+import { ajax } from 'rxjs/ajax';
+import { map, } from 'rxjs/operators';
 
 import { IHttpClient } from './IHttpClient';
 
 export class HttpClient implements IHttpClient {
-
-    private MAX_RETRY_COUNT = 10;
-    private MIN_RETRY_BACKOFF = 500;    
-    get<T>(url: string): Observable<T> {
-        throw new Error('Method not implemented.');
+    
+    public get<T>(url: string): Observable<T> {
+        return ajax({
+            url: url,
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': 'Bearer TODO'
+            }
+        }).pipe(map(resp => resp.response as T));
     }
 
-    post<T>(url: string, data: Record<string, unknown>): Observable<T> {
-        throw new Error('Method not implemented.');
+    public post<T>(url: string, body: string): Observable<T> {
+        return ajax({
+            url: url,
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': 'Bearer TODO'
+            },
+            body: body
+        }).pipe(map(resp => resp.response as T));
     }
 
-    patch<T>(url: string, data: Record<string, unknown>): Observable<T> {
-        throw new Error('Method not implemented.');
+    public patch<T>(url: string, body: string): Observable<T> {
+        return ajax({
+            url: url,
+            method: 'PATCH',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': 'Bearer TODO'
+            },
+            body: body
+        }).pipe(map(resp => resp.response as T));
     }
 
-    delete<T>(url: string): Observable<T> {
-        throw new Error('Method not implemented.');
+    public delete<T>(url: string): Observable<T> {
+        return ajax({
+            url: url,
+            method: 'DELETE',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': 'Bearer TODO'
+            }
+        }).pipe(map(resp => resp.response as T));
     }
 
-    private linearBackoffRetry(source: Observable<AjaxResponse>) {
-        throw new Error('Method not implemented.');
-    }   
+    public withExponentialBackoffRetryStrategy(maxRetry: number = 5, minBackoffMs: number = 500, backoffScale: number = 0.1) {
+       return pipe(
+           //map(response => response.response)
+       );
+    }
 }

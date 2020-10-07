@@ -1,6 +1,6 @@
 import { Observable } from 'rxjs';
 
-import { IAuthentication, IUser } from '~api/models/user';
+import { IAuthentication, IUser } from '~api/contracts/user';
 
 /**
  * Interface definition for the forex-miner API client
