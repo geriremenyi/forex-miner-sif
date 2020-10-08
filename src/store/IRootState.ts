@@ -1,8 +1,10 @@
 import { RouterState } from 'connected-react-router';
 
-import { ILoginState } from '~app/user/login/redux/ILoginState';
+import { ILoggedInUserState } from '~app/user/login/redux/ILoggedInUserState';
+import { INotificationsState } from '~common/notifications/INotificationState';
 
 export interface IRootState {
-    login: ILoginState,
-    router: RouterState
+    user: ILoggedInUserState,
+    router: RouterState,
+    notifications: INotificationsState
 }
