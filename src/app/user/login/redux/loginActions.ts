@@ -1,6 +1,7 @@
 import { createAction } from "@reduxjs/toolkit";
+import { IProblemDetails } from "~api/contracts/error/IProblemDetails";
 
-import { IAuthentication, IUser } from "~api/models/user";
+import { IAuthentication, IUser } from "~api/contracts/user";
 import { AsyncActionName } from "~common/types";
 
 /**
@@ -11,7 +12,7 @@ const loginActionsNamespace = 'USER';
 /**
  * Name of the login actions
  */
-const loginActionNames = {
+export const loginActionNames = {
     LOGIN: new AsyncActionName(loginActionsNamespace, 'LOGIN'),
     LOGOUT: new AsyncActionName(loginActionsNamespace, 'LOGOUT'),
     REGISTER: new AsyncActionName(loginActionsNamespace, 'REGISTER')
@@ -22,5 +23,6 @@ const loginActionNames = {
  */
 export const loginActions = {
     loginStart: createAction<IAuthentication>(loginActionNames.LOGIN.START),
-    loginSuccess: createAction<IUser>(loginActionNames.LOGIN.SUCCESS)
+    loginSuccess: createAction<IUser>(loginActionNames.LOGIN.SUCCESS),
+    loginFailed: createAction<IProblemDetails>(loginActionNames.LOGIN.ERROR)
 };
