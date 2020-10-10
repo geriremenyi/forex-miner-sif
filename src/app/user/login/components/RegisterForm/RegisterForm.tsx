@@ -3,13 +3,33 @@ import { MdEmail, MdLock, MdPerson } from 'react-icons/md';
 
 import { FormField, FormFieldType } from '~components/FormField';
 
-import { IRegisterFormProps } from '.';
+import { IRegisterFormProps, IRegisterFormState } from '.';
 
 import styles from './RegisterForm.module.scss';
 import { isRegisterFormActive } from '~app/user/login/shared/functions';
 import { Button } from '~components/Button';
 
-export class RegisterForm extends React.Component<IRegisterFormProps> {
+export class RegisterForm extends React.Component<IRegisterFormProps, IRegisterFormState> {
+
+    public constructor(props: IRegisterFormProps) {
+        // Init props
+        super(props);
+
+        // Init state
+        this.state = {
+            firstName: '',
+            lastName: '',
+            email: '',
+            password: ''
+        };
+
+        // Init functions
+        this.onFirstNameChange = this.onFirstNameChange.bind(this);
+        this.onLastNameChange = this.onLastNameChange.bind(this);
+        this.onEmailChange = this.onEmailChange.bind(this);
+        this.onPasswordChange = this.onPasswordChange.bind(this);
+        this.onRegisterFormSubmit = this.onRegisterFormSubmit.bind(this);
+    }
 
     public render(): React.ReactNode {
         return (
@@ -20,21 +40,45 @@ export class RegisterForm extends React.Component<IRegisterFormProps> {
                             <div className={styles.registerWrapper}>
                                 <h1>Create Free Account</h1>
                                 <div className='container-fluid'>
-                                    <form>
+                                    <form onSubmit={this.onRegisterFormSubmit}>
                                         <div className='row row-center'>
                                             <div className={'col-lg-6'}>
-                                                <FormField type={FormFieldType.Text} label='Firstname' icon={<MdPerson />}/>
+                                                <FormField 
+                                                    type={FormFieldType.Text} 
+                                                    label='Firstname'
+                                                    value={this.state.firstName}
+                                                    onChange={this.onFirstNameChange}
+                                                    icon={<MdPerson />}
+                                                />
                                             </div>
                                             <div className={'col-lg-6'}>
-                                                <FormField type={FormFieldType.Text} label='Lastname' icon={<MdPerson />}/>
+                                                <FormField 
+                                                    type={FormFieldType.Text}
+                                                    value={this.state.lastName}
+                                                    onChange={this.onLastNameChange}
+                                                    label='Lastname' 
+                                                    icon={<MdPerson />}
+                                                />
                                             </div>
                                         </div>
                                         <div className='row row-center'>
                                             <div className={'col-lg-6'}>
-                                                <FormField type={FormFieldType.Email} label='Email' icon={<MdEmail />}/>
+                                                <FormField 
+                                                    type={FormFieldType.Email}
+                                                    value={this.state.email}
+                                                    onChange={this.onEmailChange}
+                                                    label='Email' 
+                                                    icon={<MdEmail />
+                                                }/>
                                             </div>
                                             <div className={'col-lg-6'}>
-                                                <FormField type={FormFieldType.Password} label='Password' icon={<MdLock />}/>
+                                                <FormField 
+                                                    type={FormFieldType.Password} 
+                                                    value={this.state.password}
+                                                    onChange={this.onPasswordChange}
+                                                    label='Password' 
+                                                    icon={<MdLock />}
+                                                />
                                             </div>
                                         </div>
                                         <div className='row row-center'>
@@ -52,6 +96,36 @@ export class RegisterForm extends React.Component<IRegisterFormProps> {
                 </div>
             </div>
         );
+    }
+
+    private onFirstNameChange(event: React.ChangeEvent<HTMLInputElement>): void {
+        this.setState({
+            firstName: event.currentTarget.value
+        });
+    }
+
+    private onLastNameChange(event: React.ChangeEvent<HTMLInputElement>): void {
+        this.setState({
+            lastName: event.currentTarget.value
+        });
+    }
+
+    private onEmailChange(event: React.ChangeEvent<HTMLInputElement>): void {
+        this.setState({
+            email: event.currentTarget.value
+        });
+    }
+
+    private onPasswordChange(event: React.ChangeEvent<HTMLInputElement>): void {
+        this.setState({
+            password: event.currentTarget.value
+        });
+    }
+
+    private onRegisterFormSubmit(event: React.FormEvent) {        
+        // TODO
+        console.log(this.state)
+        event.preventDefault();
     }
 
 }

@@ -1,20 +1,22 @@
 import React from 'react';
 import { Provider } from 'react-redux';
-import { Route, Switch } from 'react-router-dom';
+import {  Switch } from 'react-router-dom';
 import { ConnectedRouter } from 'connected-react-router';
 
 import { PrivateRoute } from '~components/PrivateRoute/PrivateRoute';
 import { history, store } from '~store';
 import { LoginPageContainer } from './user/login/page/LoginPageContainer';
+import { DashboardPage } from './dashboard/page';
+import { LoginRoute } from '~components/LoginRoute';
 
 export const App: React.FunctionComponent = () => {
     return ( 
         <Provider store={store}>
             <ConnectedRouter history={history}>
                 <Switch>
-                    <Route path="/login" component={LoginPageContainer} />
-                    <Route path="/register" component={LoginPageContainer} />
-                    <PrivateRoute path="/" />
+                    <LoginRoute path="/login" component={LoginPageContainer} />
+                    <LoginRoute path="/register" component={LoginPageContainer} />
+                    <PrivateRoute path="/" component={DashboardPage} />
                 </Switch>
             </ConnectedRouter>
         </Provider>

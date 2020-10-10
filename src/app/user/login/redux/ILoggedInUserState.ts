@@ -1,9 +1,9 @@
-import { IUser } from '~api/models/user';
+import { IUser } from '~api/contracts/user';
 
 /**
- * Login state slice in the global store
+ * Logged in user state slice in global state
  */
-export interface ILoginState {
+export interface ILoggedInUserState {
   /**
    * Is there a logged in user
    */
