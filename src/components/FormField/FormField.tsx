@@ -62,6 +62,9 @@ export class FormField extends React.Component<IFormFieldProps, IFormFieldState>
                         ref={(input) => this.input = input}
                         id={this.state.fieldId} 
                         type={this.state.currentFormFieldType}
+                        onChange={this.props.onChange}
+                        required={this.props.required}
+                        pattern={this.props.pattern}
                     />
                     { this.props.type === FormFieldType.Password ?
                         <IconContext.Provider value={{ size: formFieldStyles.iconSize }}>

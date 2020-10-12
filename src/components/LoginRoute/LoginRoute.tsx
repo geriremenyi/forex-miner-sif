@@ -4,14 +4,14 @@ import { Redirect, Route, RouteProps } from 'react-router-dom';
 import { store } from '~store';
 
 /**
- * Private route component.
+ * Login route component
  * 
  * This component acts exactly like the Route component
- * but it hides the corresponding route component behind
+ * but it hides the corresponding login/register component behind
  * an authentication check, and redirects everything to 
- * the login page if user is not logged in
+ * the dashboard is there is a user logged in
  */
-export class PrivateRoute extends React.Component<RouteProps> {
+export class LoginRoute extends React.Component<RouteProps> {
 
     /**
 	 * Component initialization
@@ -29,9 +29,9 @@ export class PrivateRoute extends React.Component<RouteProps> {
 	 */
     public render(): React.ReactElement {
         return (
-            store.getState().login.isUserLoggedIn ? 
-                <Route {...this.props} /> :  
-                <Redirect to='/login' />
+            store.getState().login.isUserLoggedIn ?
+                <Redirect to='/' />:
+                <Route {...this.props} />    
         );
     }
 
