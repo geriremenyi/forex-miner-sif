@@ -6,6 +6,11 @@ import { ReactNode } from 'react';
  */
 export interface IGraphProps {
     /**
+     * Number of particles
+     */
+    numberOfParticles: number;
+
+    /**
      * Children components of the graph
      */
     children?: ReactNode;

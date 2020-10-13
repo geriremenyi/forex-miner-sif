@@ -1,11 +1,12 @@
+@use "sass:map";
 @use 'src/style/theme' as theme;
+@use 'src/style/spacing' as spacing;
 
 .switchPanelContainer {
     width: 100%;
     height: 100%;
     padding: 0;
-    @include theme.color-it(theme.$prop-background-color, theme.$color-login-side-panel);
-    @include theme.color-it(theme.$prop-color, theme.$color-login-side-panel-text);
+    @include theme.color-it(theme.$prop-background-color, theme.$color-login-switch-panel);
 
     .switchPanelRow {
         height: 100%;
@@ -17,6 +18,8 @@
 
             .fullWidthButton {
                 width: 100%;
+                @include theme.color-it(theme.$prop-background-color, theme.$color-login-switch-panel-button);
+                @include theme.color-it(theme.$prop-color, theme.$color-login-switch-panel-button-text);
             }
         }
     }
@@ -47,6 +50,7 @@
     margin-top: -120px;
     text-align: center;
     overflow: hidden;
+    @include theme.color-it(theme.$prop-color, theme.$color-login-switch-panel-text);
 
     &.coldLoad {
         animation: none !important;
@@ -94,7 +98,41 @@
             }
         }
     }
-}   
+}
+
+@media(max-width: map.get(spacing.$breakpoints, spacing.$size-extra-large) - 1px) {
+    .switchTextWrapperContainer {
+        margin-top: -140px;
+
+        .switchTextWrapper {
+            width: 250px;
+        }    
+    }
+}
+
+@media(max-width: map.get(spacing.$breakpoints, spacing.$size-large) - 1px) {
+    .switchPanelContainer {
+        visibility: hidden;
+
+        .switchPanelRow {    
+            .switchWrapper {
+                .fullWidthButton {
+                    position: fixed;
+                    left: 0;
+                    bottom: 0;
+                    @include theme.color-it(theme.$prop-background-color, theme.$color-login-switch-panel-button-text);
+                    @include theme.color-it(theme.$prop-color, theme.$color-login-switch-panel-button);
+                    visibility: visible;
+                    border-radius: 0;
+                }
+            }
+        }
+    }
+
+    .switchTextWrapperContainer {
+        display: none;
+    }
+}
 
 @keyframes register-to-login {
     0% { width: 33.3333333333%; left: 0; }
