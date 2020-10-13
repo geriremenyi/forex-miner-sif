@@ -1,8 +1,9 @@
 import { Observable } from 'rxjs';
+import { IProblemDetails } from '~api/contracts/error/IProblemDetails';
 
 export interface IHttpClient {
-    get<T>(url: string): Observable<T>;
-    post<T>(url: string, body: string): Observable<T>;
-    patch<T>(url: string, body: string): Observable<T>;
-    delete<T>(url: string): Observable<T>;
+    get<R>(url: string): Observable<R>;
+    post<B, R>(url: string, body: B): Observable<R>;
+    patch<B, R>(url: string, body: B): Observable<R>;
+    delete<R>(url: string): Observable<R>;
 }
