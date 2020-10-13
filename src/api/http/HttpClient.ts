@@ -1,12 +1,13 @@
-import { Observable, pipe } from 'rxjs';
+import { Observable, pipe, throwError } from 'rxjs';
 import { ajax } from 'rxjs/ajax';
-import { map, } from 'rxjs/operators';
+import { map, catchError} from 'rxjs/operators';
+import { IProblemDetails } from '~api/contracts/error/IProblemDetails';
 
 import { IHttpClient } from './IHttpClient';
 
 export class HttpClient implements IHttpClient {
     
-    public get<T>(url: string): Observable<T> {
+    public get<R>(url: string): Observable<R> {
         return ajax({
             url: url,
             method: 'GET',
@@ -14,10 +15,13 @@ export class HttpClient implements IHttpClient {
                 'Content-Type': 'application/json',
                 'Authorization': 'Bearer TODO'
             }
-        }).pipe(map(resp => resp.response as T));
+        }).pipe(
+            map(resp => resp.response as R),
+            catchError(error => throwError(error.response as IProblemDetails))
+        );
     }
 
-    public post<T>(url: string, body: string): Observable<T> {
+    public post<B, R>(url: string, body: B): Observable<R> {
         return ajax({
             url: url,
             method: 'POST',
@@ -25,11 +29,14 @@ export class HttpClient implements IHttpClient {
                 'Content-Type': 'application/json',
                 'Authorization': 'Bearer TODO'
             },
-            body: body
-        }).pipe(map(resp => resp.response as T));
+            body: JSON.stringify(body)
+        }).pipe(
+            map(resp => resp.response as R),
+            catchError(error => throwError(error.response as IProblemDetails))
+        );
     }
 
-    public patch<T>(url: string, body: string): Observable<T> {
+    public patch<B, R>(url: string, body: B): Observable<R> {
         return ajax({
             url: url,
             method: 'PATCH',
@@ -37,11 +44,14 @@ export class HttpClient implements IHttpClient {
                 'Content-Type': 'application/json',
                 'Authorization': 'Bearer TODO'
             },
-            body: body
-        }).pipe(map(resp => resp.response as T));
+            body: JSON.stringify(body)
+        }).pipe(
+            map(resp => resp.response as R),
+            catchError(error => throwError(error.response as IProblemDetails))
+        );
     }
 
-    public delete<T>(url: string): Observable<T> {
+    public delete<R>(url: string): Observable<R> {
         return ajax({
             url: url,
             method: 'DELETE',
@@ -49,7 +59,10 @@ export class HttpClient implements IHttpClient {
                 'Content-Type': 'application/json',
                 'Authorization': 'Bearer TODO'
             }
-        }).pipe(map(resp => resp.response as T));
+        }).pipe(
+            map(resp => resp.response as R),
+            catchError(error => throwError(error.response as IProblemDetails))
+        );
     }
 
     public withExponentialBackoffRetryStrategy(maxRetry: number = 5, minBackoffMs: number = 500, backoffScale: number = 0.1) {
