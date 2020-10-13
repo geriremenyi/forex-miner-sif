@@ -8,6 +8,8 @@ import { IRegisterFormProps, IRegisterFormState } from '.';
 import styles from './RegisterForm.module.scss';
 import { isRegisterFormActive } from '~app/user/login/shared/functions';
 import { Button } from '~components/Button';
+import { store } from '~store';
+import { loginActions } from '../../redux';
 
 export class RegisterForm extends React.Component<IRegisterFormProps, IRegisterFormState> {
 
@@ -127,8 +129,17 @@ export class RegisterForm extends React.Component<IRegisterFormProps, IRegisterF
     }
 
     private onRegisterFormSubmit(event: React.FormEvent) {        
-        // TODO
-        console.log(this.state)
+        // TODO: do the checks
+        
+        // Dispatch login start action with login data
+        store.dispatch(loginActions.registerStart({
+            firstName: this.state.firstName,
+            lastName: this.state.lastName,
+            email: this.state.email,
+            password: this.state.password
+        }));
+
+        // Block page reload and param population as get params
         event.preventDefault();
     }
 
