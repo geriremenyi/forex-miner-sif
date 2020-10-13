@@ -7,7 +7,6 @@ import { ILoginFormProps, ILoginFormState } from '.';
 
 import { isLoginFormActive } from '../../shared/functions';
 import { Button } from '~components/Button';
-import { Notification } from '~components/Notification';
 import { store } from '~store';
 
 import styles from './LoginForm.module.scss';
@@ -34,7 +33,6 @@ export class LoginForm extends React.Component<ILoginFormProps, ILoginFormState>
     public render(): React.ReactNode {
         return (
             <div className={`container-fixed ${styles.loginContainer} ${!isLoginFormActive(this.props.activeForm) ? styles.hiddenContainer : ''}`}>
-                <Notification />
                 <div className={`row row-center ${styles.loginRow}`}>
                     <div className='col-lg-8'>
                         <div className={`${styles.loginWrapperContainer} ${!isLoginFormActive(this.props.activeForm) ? styles.slideOut : ''}`} >

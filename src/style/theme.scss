@@ -15,10 +15,10 @@ $color-primary-deep-dark: 'colorPrimaryDeepDark';
 $color-primary-text: 'colorPrimaryText';
 $color-input-background: 'colorInputBackground';
 $color-input-border: 'colorInputBorder';
-$color-login-side-panel: 'colorLoginSidePanel';
-$color-login-side-panel-text: 'colorLoginSidePanelText';
-$color-login-side-panel-button: 'colorLoginSidePanelButton';
-$color-login-side-panel-button-text: 'colorLoginSidePanelButtonText';
+$color-login-switch-panel: 'colorLoginSidePanel';
+$color-login-switch-panel-text: 'colorLoginSidePanelText';
+$color-login-switch-panel-button: 'colorLoginSidePanelButton';
+$color-login-switch-panel-button-text: 'colorLoginSidePanelButtonText';
 
 // Colorable properties
 $prop-background-color: 'background-color';
@@ -36,10 +36,10 @@ $theme-colors: (
         $color-primary-text: #F0F5FF,
         $color-input-background: #FFFFFF,
         $color-input-border: #CFD8E3,
-        $color-login-side-panel: #4285F4,
-        $color-login-side-panel-text: #F0F5FF,
-        $color-login-side-panel-button: #F1F5F9,
-        $color-login-side-panel-button-text: #27303F
+        $color-login-switch-panel: #4285F4,
+        $color-login-switch-panel-text: #F0F5FF,
+        $color-login-switch-panel-button: #F1F5F9,
+        $color-login-switch-panel-button-text: #27303F
     ),
     $dark: (
         $color-background: #1A202E,
@@ -50,10 +50,10 @@ $theme-colors: (
         $color-primary-text: #F0F5FF,
         $color-input-background: rgba(0, 0, 0, .05),
         $color-input-border: #64748B,
-        $color-login-side-panel: #27303F,
-        $color-login-side-panel-text: #FFFFFF,
-        $color-login-side-panel-button: #4285F4,
-        $color-login-side-panel-button-text: #F0F5FF
+        $color-login-switch-panel: #27303F,
+        $color-login-switch-panel-text: #FFFFFF,
+        $color-login-switch-panel-button: #4285F4,
+        $color-login-switch-panel-button-text: #F0F5FF
     )
 );
 

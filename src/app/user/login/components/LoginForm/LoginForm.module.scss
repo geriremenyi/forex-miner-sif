@@ -1,3 +1,4 @@
+@use "sass:map";
 @use 'src/style/spacing' as spacing;
 
 .loginContainer {
@@ -10,7 +11,8 @@
 
     .loginRow {
         height: 100%;
-        overflow: hidden;
+        overflow-x: hidden;
+        overflow-y: auto;
 
         .loginWrapperContainer {
             width: 100%;
@@ -21,6 +23,7 @@
                 max-width: 400px;
                 margin: auto;
                 text-align: center;
+                padding-bottom: spacing.get-spacing-px(spacing.$size-medium);
 
                 .loginButtonWrapper {
                     padding: spacing.get-spacing-px(spacing.$size-small);
@@ -35,6 +38,18 @@
                 visibility: hidden;
                 opacity: 0;
                 margin-left: 200px;
+            }
+        }
+    }
+}
+
+@media(max-width: map.get(spacing.$breakpoints, spacing.$size-large) - 1px) {
+    .loginContainer {
+        .loginRow {
+            .loginWrapperContainer {
+                .loginWrapper {
+                    padding-bottom: spacing.get-spacing-px(spacing.$size-medium) * 3;
+                }
             }
         }
     }

@@ -118,6 +118,6 @@ jobs:
         with:
           registry: ghcr.io
           username: "geriremenyi"
-          password: ${{ secrets.GITHUB_PAT }}
+          password: ${{ secrets.PAT }}
           repository: geriremenyi/forex-miner-sif
           tags: ${{ steps.package-version.outputs.current-version}},latest

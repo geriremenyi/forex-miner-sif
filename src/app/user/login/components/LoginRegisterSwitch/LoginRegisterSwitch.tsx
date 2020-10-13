@@ -18,7 +18,7 @@ export class LoginRegisterSwitch extends React.Component<ILoginRegisterSwitchPro
         return (
             <>
                 <div className={`container-fixed ${styles.switchPanelContainer} ${isLoginFormActive(this.props.activeForm) ? styles.showLogin : ''} ${isRegisterFormActive(this.props.activeForm) ? styles.showRegister : ''} ${this.props.isColdLoad ? styles.coldLoad : ''}`}>
-                    <Graph>
+                    <Graph numberOfParticles={50} >
                         <div className={`row row-center ${styles.switchPanelRow}`}>
                             <div className={`${styles.switchWrapper} padding-xl`}>
                                 <Button className={styles.fullWidthButton} onClick={this.props.onSwitchButtonClick}>{isLoginFormActive(this.props.activeForm) ? 'Sign Up' : 'Log In'}</Button>

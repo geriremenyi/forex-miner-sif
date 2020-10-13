@@ -20,15 +20,22 @@ export class Graph extends React.Component<IGraphProps> {
     public render(): React.ReactNode {
         return (
             <div className={styles.graphWrapper}>
+                <div className={styles.particlesColor} />
                 <Particles width='100%' height='100%' className={styles.particlesWrapper} params={{
                     particles: {
                         number: {
-                            value: 50,
+                            value: this.props.numberOfParticles,
                             density: {
                                 enable: true,
                                 value_area: 500
                             }
                         },
+                        color: {
+                            value: styles.particlesColor
+                        },
+                        lineLinked: {
+                            color: styles.particlesColor
+                        }
                     }
                 }}/>
                 <div className={styles.childrenWrapper}>{ this.props.children ? this.props.children : '' }</div>

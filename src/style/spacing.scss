@@ -10,14 +10,14 @@ $size-extra-small: 'xs';
 $size-small: 'sm';
 $size-medium: 'md';
 $size-large: 'lg';
-$size-xl: 'xl';
+$size-extra-large: 'xl';
 
 $sizes: (
     $size-extra-small,
     $size-small,
     $size-medium,
     $size-large,
-    $size-xl
+    $size-extra-large
 );
 
 // Media breakpoints (min-width)
@@ -25,7 +25,7 @@ $breakpoints: (
     $size-small: 576px,
     $size-medium: 768px,
     $size-large: 960px,
-    $size-xl: 1200px
+    $size-extra-large: 1200px
 );
 
 // Spacing types
@@ -44,7 +44,7 @@ $spacing-sizes: (
     $size-small: 8,
     $size-medium: 16,
     $size-large: 32,
-    $size-xl: 64
+    $size-extra-large: 64
 );
 
 // Directions
