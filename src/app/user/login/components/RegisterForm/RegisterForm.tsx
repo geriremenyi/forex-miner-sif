@@ -48,6 +48,7 @@ export class RegisterForm extends React.Component<IRegisterFormProps, IRegisterF
                                                     label='Firstname'
                                                     value={this.state.firstName}
                                                     onChange={this.onFirstNameChange}
+                                                    required
                                                     icon={<MdPerson />}
                                                 />
                                             </div>
@@ -56,6 +57,7 @@ export class RegisterForm extends React.Component<IRegisterFormProps, IRegisterF
                                                     type={FormFieldType.Text}
                                                     value={this.state.lastName}
                                                     onChange={this.onLastNameChange}
+                                                    required
                                                     label='Lastname' 
                                                     icon={<MdPerson />}
                                                 />
@@ -67,6 +69,7 @@ export class RegisterForm extends React.Component<IRegisterFormProps, IRegisterF
                                                     type={FormFieldType.Email}
                                                     value={this.state.email}
                                                     onChange={this.onEmailChange}
+                                                    required
                                                     label='Email' 
                                                     icon={<MdEmail />
                                                 }/>
@@ -76,6 +79,7 @@ export class RegisterForm extends React.Component<IRegisterFormProps, IRegisterF
                                                     type={FormFieldType.Password} 
                                                     value={this.state.password}
                                                     onChange={this.onPasswordChange}
+                                                    required
                                                     label='Password' 
                                                     icon={<MdLock />}
                                                 />

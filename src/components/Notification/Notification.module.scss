@@ -1,0 +1,43 @@
+@use 'src/style/spacing' as spacing;
+@use 'src/style/theme' as theme;
+
+:export {
+    iconSize: spacing.$icon-size;
+}
+
+.notification {
+    display: flex;
+    flex-direction: row;
+    @include theme.color-it(theme.$prop-color, theme.$color-notification-text);
+
+    .notificationBody {
+        display: flex;
+        flex-direction: row;
+    }
+
+    .notificationRemove {
+        transition: color .1s ease-in;
+        margin-left: auto;
+        cursor: pointer;
+    }
+
+    .notificationRemove:hover {
+        @include theme.color-it(theme.$prop-color, theme.$color-notification-text-dark);
+    }
+}
+
+.notification.info {
+    @include theme.color-it(theme.$prop-background-color, theme.$color-info);
+}
+
+.notification.warning {
+    @include theme.color-it(theme.$prop-background-color, theme.$color-warning);
+}
+
+.notification.error {
+    @include theme.color-it(theme.$prop-background-color, theme.$color-error);
+}
+
+.notification.success {
+    @include theme.color-it(theme.$prop-background-color, theme.$color-success);
+}
