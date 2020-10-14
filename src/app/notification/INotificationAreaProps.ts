@@ -1,5 +1,5 @@
-import { IHash } from "~common/types";
-import { INotification } from "~common/types/notification";
+import { IHash } from '~common/types';
+import { INotification } from '~common/types/notification';
 
 /**
  * Notification area properties

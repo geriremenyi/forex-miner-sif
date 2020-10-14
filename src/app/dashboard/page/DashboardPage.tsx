@@ -4,7 +4,7 @@ import { Navigation } from '~app/navigation/Navigation';
 import { loginActions } from '~app/user/login/redux';
 import { store } from '~store';
 
-import { IDashboardPageProps } from ".";
+import { IDashboardPageProps } from '.';
 
 export class DashboardPage extends React.Component<IDashboardPageProps> {
 
@@ -16,7 +16,7 @@ export class DashboardPage extends React.Component<IDashboardPageProps> {
         this.logout = this.logout.bind(this);
     }
 
-    public render() {
+    public render(): React.ReactNode {
         return (
             <>
                 <Navigation handleLogout={this.logout} />

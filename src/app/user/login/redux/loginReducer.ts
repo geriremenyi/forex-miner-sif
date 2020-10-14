@@ -1,11 +1,9 @@
-import { createReducer, PayloadAction } from "@reduxjs/toolkit";
-import { stat } from "fs";
-import { IProblemDetails } from "~api/contracts/error/IProblemDetails";
+import { createReducer, PayloadAction } from '@reduxjs/toolkit';
 
-import { IAuthenticatedUser } from "~api/contracts/user";
+import { IAuthenticatedUser } from '~api/contracts/user';
 
-import { ILoggedInUserState } from "./ILoggedInUserState";
-import { loginActions } from "./loginActions";
+import { ILoggedInUserState } from './ILoggedInUserState';
+import { loginActions } from './loginActions';
 
 /**
  * Initial state of the login slice of the global state

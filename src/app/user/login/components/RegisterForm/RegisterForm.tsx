@@ -74,7 +74,7 @@ export class RegisterForm extends React.Component<IRegisterFormProps, IRegisterF
                                                     required
                                                     label='Email' 
                                                     icon={<MdEmail />
-                                                }/>
+                                                    }/>
                                             </div>
                                             <div className={'col-lg-6'}>
                                                 <FormField 

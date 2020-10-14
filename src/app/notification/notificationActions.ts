@@ -1,5 +1,5 @@
-import { createAction } from "@reduxjs/toolkit";
-import { INotification } from "~common/types/notification";
+import { createAction } from '@reduxjs/toolkit';
+import { INotification } from '~common/types/notification';
 
 /**
  * Namespace of the notification actions

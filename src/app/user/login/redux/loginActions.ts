@@ -1,8 +1,8 @@
-import { createAction } from "@reduxjs/toolkit";
-import { IProblemDetails } from "~api/contracts/error/IProblemDetails";
+import { createAction } from '@reduxjs/toolkit';
+import { IProblemDetails } from '~api/contracts/error/IProblemDetails';
 
-import { IAuthentication, IAuthenticatedUser, IRegistration, IUser } from "~api/contracts/user";
-import { AsyncActionName } from "~common/types";
+import { IAuthentication, IAuthenticatedUser, IRegistration, IUser } from '~api/contracts/user';
+import { AsyncActionName } from '~common/types';
 
 /**
  * Namespace of the login actions

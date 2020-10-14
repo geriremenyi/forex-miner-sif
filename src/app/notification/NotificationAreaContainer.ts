@@ -7,7 +7,7 @@ import { INotificationAreaProps, NotificationArea } from '.';
 const mapStateToProps = (state: IRootState): INotificationAreaProps => {
     return {
         notifications: state.notifications
-    }
+    };
 };
 
 // Container

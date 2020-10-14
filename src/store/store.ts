@@ -10,7 +10,7 @@ import { IRootState } from './IRootState';
 
 // Middlewares
 const routeMiddleware = routerMiddleware(history);
-const epicMiddleware = createEpicMiddleware<RootAction, RootAction, IRootState, any>();
+const epicMiddleware = createEpicMiddleware<RootAction, RootAction, IRootState>();
 const middlewares = [...getDefaultMiddleware(), routeMiddleware, epicMiddleware];
 
 // Configure

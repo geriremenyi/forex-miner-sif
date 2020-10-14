@@ -6,7 +6,7 @@ import { INavigationProps } from '.';
 import styles from './Navigation.module.scss';
 
 export class Navigation extends React.Component<INavigationProps> {
-    public render() {
+    public render(): React.ReactNode {
         return (
             <div className={styles.navigation}>
                 <nav>
