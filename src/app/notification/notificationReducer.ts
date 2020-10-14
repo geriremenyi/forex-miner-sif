@@ -21,7 +21,7 @@ export const notificationReducer = createReducer(notificationInitialState, {
         delete state[action.payload];
     },
     [notificationActions.liquidate.type]: (state: IHash<INotification>) => {
-        Object.keys(state).map((notificationId) => {
+        Object.keys(state).forEach((notificationId) => {
             delete state[notificationId];
         });
     }
