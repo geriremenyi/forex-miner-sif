@@ -5,6 +5,8 @@ import { store } from '~store';
 import { INotificationAreaProps } from './INotificationAreaProps';
 import { notificationActions } from './notificationActions';
 
+import styles from './NotificationArea.module.scss';
+
 /**
  * Notification area react component
  */
@@ -21,9 +23,9 @@ export class NotificationArea extends React.Component<INotificationAreaProps> {
      */
     public render() {
         return (
-            <div>
+            <div className={styles.notificationArea}>
                 {Object.keys(this.props.notifications).map(notificationId => {
-                    return <Notification onRemove={this.removeNotification} {...this.props.notifications[notificationId]} />
+                    return <Notification key={notificationId} onRemove={this.removeNotification} {...this.props.notifications[notificationId]} />
                 })}
             </div>
         );

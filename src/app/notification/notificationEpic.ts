@@ -32,7 +32,7 @@ const registerFailedNotificationEpic: Epic<RootAction, RootAction, IRootState> =
 
 const routeChangedNotificationEpic: Epic<RootAction, RootAction, IRootState> = (action$) => action$.pipe(
     ofType(LOCATION_CHANGE),
-    tap(() => store.dispatch(notificationActions.liquidate())),
+    //tap(() => store.dispatch(notificationActions.liquidate())),
     ignoreElements()
 );
 

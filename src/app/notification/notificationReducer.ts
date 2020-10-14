@@ -3,14 +3,35 @@ import { IProblemDetails } from "~api/contracts/error/IProblemDetails";
 import { loginActions } from "~app/user/login/redux";
 
 import { IHash } from "~common/types";
-import { INotification } from "~common/types/notification";
+import { INotification, NotificationType } from "~common/types/notification";
 
 import { notificationActions } from ".";
 
 /**
  * Initial state of the notification slice of the global state
  */
-const notificationInitialState: IHash<INotification> = {};
+const notificationInitialState: IHash<INotification> = {
+    "info": {
+        id: "info",
+        text: "This is an initial notification for testing",
+        type: NotificationType.Info
+    },
+    "warning": {
+        id: "warning",
+        text: "This is an initial notification for testing",
+        type: NotificationType.Warning
+    },
+    "error": {
+        id: "error",
+        text: "This is an initial notification for testing",
+        type: NotificationType.Error
+    },
+    "success": {
+        id: "success",
+        text: "This is an initial notification for testing",
+        type: NotificationType.Success
+    }
+};
 
 /**
  * Reducer to handle login actions
