@@ -1,4 +1,4 @@
-import { NotificationType } from ".";
+import { NotificationType } from '.';
 
 /**
  * Properties of the notification component

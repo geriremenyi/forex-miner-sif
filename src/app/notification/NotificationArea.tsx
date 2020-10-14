@@ -21,11 +21,11 @@ export class NotificationArea extends React.Component<INotificationAreaProps> {
     /**
      * 
      */
-    public render() {
+    public render(): React.ReactNode {
         return (
             <div className={styles.notificationArea}>
                 {Object.keys(this.props.notifications).map(notificationId => {
-                    return <Notification key={notificationId} onRemove={this.removeNotification} {...this.props.notifications[notificationId]} />
+                    return <Notification key={notificationId} onRemove={this.removeNotification} {...this.props.notifications[notificationId]} />;
                 })}
             </div>
         );

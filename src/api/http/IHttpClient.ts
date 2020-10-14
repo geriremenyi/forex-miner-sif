@@ -1,5 +1,4 @@
 import { Observable } from 'rxjs';
-import { IProblemDetails } from '~api/contracts/error/IProblemDetails';
 
 export interface IHttpClient {
     get<R>(url: string): Observable<R>;

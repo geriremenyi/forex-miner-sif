@@ -49,7 +49,7 @@ describe(MockApiClient.name, () => {
             loginObservable.subscribe(
                 user => fail(`The login should fail, however got a user: ${user}`),
                 error => {
-                    expect(error).toBeInstanceOf(Error);
+                    expect(error.status).toBe(404);
                     done();
                 }
             );

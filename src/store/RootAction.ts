@@ -1,5 +1,5 @@
-import { notificationActions } from "~app/notification";
-import { loginActions } from "~app/user/login/redux";
+import { notificationActions } from '~app/notification';
+import { loginActions } from '~app/user/login/redux';
 
 export type RootAction = 
     | ReturnType<typeof loginActions.loginStart>

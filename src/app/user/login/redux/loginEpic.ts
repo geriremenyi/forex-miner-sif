@@ -1,16 +1,16 @@
-import { push } from "connected-react-router";
-import { combineEpics, Epic, ofType } from "redux-observable";
+import { push } from 'connected-react-router';
+import { combineEpics, Epic, ofType } from 'redux-observable';
 import { of } from 'rxjs';
 import { ignoreElements, catchError, map, mergeMap, tap } from 'rxjs/operators';
 
-import { RootAction } from "src/store/RootAction";
-import { ApiClientFactory } from "~api/client";
-import { IAuthentication, IRegistration, IUser } from "~api/contracts/user";
-import { notificationActions } from "~app/notification";
-import { generateRandomId } from "~common/functions/misc";
-import { NotificationType } from "~common/types/notification";
-import { IRootState, store } from "~store";
-import { loginActionNames, loginActions } from "./loginActions";
+import { RootAction } from 'src/store/RootAction';
+import { ApiClientFactory } from '~api/client';
+import { IAuthentication, IRegistration, IUser } from '~api/contracts/user';
+import { notificationActions } from '~app/notification';
+import { generateRandomId } from '~common/functions/misc';
+import { NotificationType } from '~common/types/notification';
+import { IRootState, store } from '~store';
+import { loginActionNames, loginActions } from './loginActions';
 
 export const userLoginEpic: Epic<RootAction, RootAction, IRootState> = (action$) => action$.pipe(
     ofType(loginActionNames.LOGIN.START),
@@ -59,7 +59,7 @@ export const logoutRedirectEpic: Epic<RootAction, RootAction, IRootState> = (act
     ofType(loginActionNames.LOGOUT),
     tap(() => {
         localStorage.removeItem('user');
-        return store.dispatch(push('/login'))
+        return store.dispatch(push('/login'));
     }),
     ignoreElements()
 );

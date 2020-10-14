@@ -1,4 +1,4 @@
-import { NotificationStatus } from ".";
+import { NotificationStatus } from '.';
 
 /**
  * State of the notification

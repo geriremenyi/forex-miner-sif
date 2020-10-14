@@ -1,5 +1,4 @@
 import { ActiveForm } from '../shared/types';
-import { FormState } from '~common/types';
 
 /**
  * Login page props

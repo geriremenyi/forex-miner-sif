@@ -1,4 +1,4 @@
-import { INotification } from "~common/types/notification";
+import { INotification } from '~common/types/notification';
 
 /**
  * Properties of the notification component

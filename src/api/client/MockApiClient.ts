@@ -31,10 +31,10 @@ export class MockApiClient implements IApiClient {
         } else {
             const error: IProblemDetails = {
                 status: 404,
-                type: "NOT_FOUND",
-                detail: "Invalid email or password",
-                title: "Invalid email or password" 
-            }
+                type: 'NOT_FOUND',
+                detail: 'Invalid email or password',
+                title: 'Invalid email or password' 
+            };
             return throwError(error);
         }
     }
@@ -49,10 +49,10 @@ export class MockApiClient implements IApiClient {
         if (registration.email === 'already-there@forex-miner.com' ) {
             const error: IProblemDetails = {
                 status: 400,
-                type: "BAD_REQUEST",
-                detail: "There is already a user with this email address.",
-                title: "Email is taken." 
-            }
+                type: 'BAD_REQUEST',
+                detail: 'There is already a user with this email address.',
+                title: 'Email is taken.' 
+            };
             return throwError(error);
         } else {
             return of({
