@@ -121,3 +121,31 @@ jobs:
           password: ${{ secrets.PAT }}
           repository: geriremenyi/forex-miner-sif
           tags: ${{ steps.package-version.outputs.current-version}},latest
+  deploy:
+    name: Deploy
+    needs: [release]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Checkout IaaC
+        uses: actions/checkout@v2
+        with:
+          repository: geriremenyi/forex-miner-asgard
+          ref: master
+          path: forex-miner-asgard
+
+      - name: Connect to AKS
+        shell: pwsh
+        run: |
+          ./forex-miner-asgard/init.ps1
+          Connect-AKSCluster.ps1
+
+      - name: Deploy to AKS
+        shell: pwsh
+        run: |
+          ./forex-miner-asgard/init.ps1
+          Deploy-KubernetesResource -ResourceYamlFileName 'k8s/service-forex-miner-sif.yaml'
+          Deploy-KubernetesResource -ResourceYamlFileName 'k8s/ingress-forex-miner.yaml'
+      
