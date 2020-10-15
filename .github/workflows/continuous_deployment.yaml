@@ -159,9 +159,6 @@ jobs:
         working-directory: forex-miner-asgard
         run: |
           ./init.ps1
-          ls . -all
-          ls ../ -all
-          ls ~ -all
-          Deploy-KubernetesResource -ResourceYamlFileName 'service-forex-miner-sif.yaml' -ResourceFolder './k8s'
-          Deploy-KubernetesResource -ResourceYamlFileName 'ingress-forex-miner.yaml' -ResourceFolder './k8s'
+          Deploy-KubernetesResource -ResourceYamlFileName 'app.yaml' -ResourceFolder '../k8s'
+          Deploy-KubernetesResource -ResourceYamlFileName 'service.yaml' -ResourceFolder '../k8s'
       
