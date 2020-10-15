@@ -159,7 +159,7 @@ jobs:
         working-directory: forex-miner-asgard
         run: |
           ./init.ps1
-          kubectl create secret docker-registry pullsecret --docker-server=https://ghcr.io/ --docker-username=notneeded --docker-password=${{ secrets.GH_PAT }}
+          kubectl create secret docker-registry ghcr-secret --namespace=forex-miner --docker-server=https://ghcr.io/ --docker-username=notneeded --docker-password=${{ secrets.GH_PAT }}
           Deploy-KubernetesResource -ResourceYamlFileName 'app.yaml' -ResourceFolder '../k8s'
           Deploy-KubernetesResource -ResourceYamlFileName 'service.yaml' -ResourceFolder '../k8s'
       
