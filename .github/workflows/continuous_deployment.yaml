@@ -128,7 +128,9 @@ jobs:
         with:
           context: .
           push: true
-          tags: ghcr.io/geriremeny/forex-miner-sif:${{ steps.package-version.outputs.current-version}},ghcr.io/geriremeny/forex-miner-sif:latest
+          tags: |
+            ghcr.io/geriremenyi/forex-miner-sif:${{ steps.package-version.outputs.current-version }}
+            ghcr.io/geriremenyi/forex-miner-sif:latest
   deploy:
     name: Deploy
     needs: [release]
@@ -143,6 +145,7 @@ jobs:
           repository: geriremenyi/forex-miner-asgard
           ref: master
           path: forex-miner-asgard
+          token: ${{ secrets.PAT }}
 
       - name: Connect to AKS
         shell: pwsh
