@@ -145,7 +145,7 @@ jobs:
           repository: geriremenyi/forex-miner-asgard
           ref: master
           path: forex-miner-asgard
-          token: ${{ secrets.PAT }}
+          token: ${{ secrets.GH_PAT }}
 
       - name: Connect to AKS
         working-directory: forex-miner-asgard
