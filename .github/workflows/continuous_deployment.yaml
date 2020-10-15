@@ -156,6 +156,7 @@ jobs:
 
       - name: Deploy to AKS
         shell: pwsh
+        working-directory: forex-miner-asgard
         run: |
           ./init.ps1
           Deploy-KubernetesResource -ResourceYamlFileName 'service-forex-miner-sif.yaml' -ResourceFolder './k8s'

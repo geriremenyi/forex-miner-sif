@@ -1,0 +1,105 @@
+@use 'src/style/theme' as theme;
+
+.switchPanelContainer {
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    @include theme.color-it(theme.$prop-background-color, theme.$color-login-side-panel);
+    @include theme.color-it(theme.$prop-color, theme.$color-login-side-panel-text);
+
+    .switchPanelRow {
+        height: 100%;
+        overflow: hidden;
+
+        .switchWrapper {
+            width: 100%;
+            padding-top: 160px;
+        }
+    }
+
+    &.coldLoad {
+        animation: none !important;
+    }
+
+    &.showLogin {
+        width: 33.3333333333%;
+        left: 66.6666666667%;
+        right: auto;
+        animation: register-to-login 1.2s ease-out;
+    }
+
+    &.showRegister {
+        width: 33.3333333333%;
+        left: 0;
+        right: auto;
+        animation: login-to-register 1.2s ease-out;
+    }
+}
+
+.switchTextWrapperContainer {
+    position: fixed;
+    width: 100%;
+    top: 50%;
+    margin-top: -120px;
+    text-align: center;
+    overflow: hidden;
+
+    &.coldLoad {
+        animation: none !important;
+    }
+
+    &.showLogin {
+        width: 33.3333333333%;
+        left: 66.6666666667%;
+        right: auto;
+        animation: register-to-login 1.2s ease-out;
+    }
+
+    &.showRegister {
+        width: 33.3333333333%;
+        left: 0;
+        right: auto;
+        animation: login-to-register 1.2s ease-out;
+    }
+
+    .switchTextWrapper {
+        width: 400px;
+        margin: auto;
+
+        &.loginTextWrapper {
+            .switchTextContentHideable {
+                position: relative;
+                left: 0;
+                transition: left 1.2s ease-out;
+
+                &.switchTextContentHidden {
+                    left: -200vw;
+                }
+            }
+        }
+
+        &.registerTextWrapper {
+            .switchTextContentHideable {
+                position: relative;
+                right: 0;
+                transition: right 1.2s ease-out;
+
+                &.switchTextContentHidden {
+                    right: -200vw;
+                }
+            }
+        }
+    }
+}   
+
+@keyframes register-to-login {
+    0% { width: 33.3333333333%; left: 0; }
+    50% { width: 66.6666666667%; left: 16.6666666666%; }
+    100% { width: 33.3333333333%; left: 66.6666666667%; }
+}
+
+@keyframes login-to-register {
+    0% { width: 33.3333333333%; left: 66.6666666667%; }
+    50% { width: 66.6666666667%; left: 16.6666666666%; }
+    100% { width: 33.3333333333%; left: 0; }
+}
