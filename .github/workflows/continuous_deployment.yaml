@@ -152,7 +152,7 @@ jobs:
         shell: pwsh
         run: |
           ./init.ps1 -ApplicationId "${{ secrets.AZURE_APPLICATION_ID }}" -Secret "${{ secrets.AZURE_SECRET }}" -Tenant "${{ secrets.AZURE_TENANT }}"
-          Connect-AKSCluster.ps1
+          Connect-AKSCluster
 
       - name: Deploy to AKS
         shell: pwsh
