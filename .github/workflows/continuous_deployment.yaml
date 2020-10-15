@@ -151,7 +151,7 @@ jobs:
         working-directory: forex-miner-asgard
         shell: pwsh
         run: |
-          ./init.ps1
+          ./init.ps1 -ApplicationId "${{ secrets.AZURE_APPLICATION_ID }}" -Secret "${{ secrets.AZURE_SECRET }}" -Tenant "${{ secrets.AZURE_TENANT }}"
           Connect-AKSCluster.ps1
 
       - name: Deploy to AKS
