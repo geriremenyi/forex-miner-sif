@@ -1,5 +1,5 @@
-import { IConnection } from "~api/contracts/connection";
-import { AddConnectionStatus } from ".";
+import { IConnection } from '~api/contracts/connection';
+import { AddConnectionStatus } from '.';
 
 /**
  * Connections page state slice of the global state

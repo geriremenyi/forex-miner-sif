@@ -28,7 +28,7 @@ export class ConnectionsPage extends React.Component<IConnectionsPageProps, ICon
             broker: 'Oanda',
             secret: '',
             externalAccountId: ''
-        }
+        };
 
         // Dispatch connections async action
         store.dispatch(connectionActions.getConnectionsStart());
@@ -62,7 +62,7 @@ export class ConnectionsPage extends React.Component<IConnectionsPageProps, ICon
                                             src={`${process.env.PUBLIC_URL}/icon/logo_${this.props.connections?.[0]?.broker.toLowerCase()}.png`} 
                                         />
                                         <span className={`padding-top-xs ${styles.brokerName}`}>{this.props.connections?.[0]?.broker}</span>
-                                        <span className={`padding-top-xs padding-bottom-md`}>{this.props.connections?.[0]?.type}</span>
+                                        <span className={'padding-top-xs padding-bottom-md'}>{this.props.connections?.[0]?.type}</span>
                                     </div>
                                 </Card>
                             }
@@ -76,56 +76,56 @@ export class ConnectionsPage extends React.Component<IConnectionsPageProps, ICon
     private getAddButtonIfRelevant(): React.ReactElement | undefined {
         return (
             this.props.addConnection === AddConnectionStatus.NotStarted ?
-            (<button className={styles.addBrokerButton} onClick={this.triggerAdd}>
-                <div className={`padding-md`}>
-                    <IconContext.Provider value={{ size: styles.iconSizeExtraLarge }}>
-                        <IoMdAddCircle />
-                    </IconContext.Provider>
-                </div>
-            </button>): undefined
+                (<button className={styles.addBrokerButton} onClick={this.triggerAdd}>
+                    <div className={'padding-md'}>
+                        <IconContext.Provider value={{ size: styles.iconSizeExtraLarge }}>
+                            <IoMdAddCircle />
+                        </IconContext.Provider>
+                    </div>
+                </button>): undefined
         );
     }
 
     private getTestIfRelevant(): React.ReactElement | undefined {
         return (
             this.props.addConnection === AddConnectionStatus.Started ?
-            (<div className={`${styles.addConnection}`}>
-                <form onSubmit={this.addConnection}>
-                    <div className={`${styles.brokerSelector}`}> 
-                        <img alt='logo' className={`${styles.brokerSelectorIcon}`} src={`${process.env.PUBLIC_URL}/icon/logo_oanda.png`} />
-                    </div>
-                    <div className={`${styles.textualInputs}`}>
-                        <FormField
-                            type={FormFieldType.Text}
-                            label='Connection name'
-                            value={this.state.name}
-                            onChange={this.onNameChange}
-                            icon={<BsCursorText />}
-                            required
-                        />
-                        <FormField
-                            type={FormFieldType.Password}
-                            label='Connection secret'
-                            value={this.state.secret}
-                            onChange={this.onSecretChange}
-                            icon={<FaUserSecret />}
-                            required
-                        />
-                        <FormField
-                            type={FormFieldType.Text}
-                            label='Account id'
-                            value={this.state.secret}
-                            onChange={this.onAccountIdChange}
-                            icon={<MdPermIdentity />}
-                            required
-                        />
-                    </div>
-                    <div className={`padding-md`}>
-                        <Button decoration={ButtonDecoration.Primary} type="submit">Add</Button>
-                    </div>
-                </form>
-            </div>): undefined
-        )
+                (<div className={`${styles.addConnection}`}>
+                    <form onSubmit={this.addConnection}>
+                        <div className={`${styles.brokerSelector}`}> 
+                            <img alt='logo' className={`${styles.brokerSelectorIcon}`} src={`${process.env.PUBLIC_URL}/icon/logo_oanda.png`} />
+                        </div>
+                        <div className={`${styles.textualInputs}`}>
+                            <FormField
+                                type={FormFieldType.Text}
+                                label='Connection name'
+                                value={this.state.name}
+                                onChange={this.onNameChange}
+                                icon={<BsCursorText />}
+                                required
+                            />
+                            <FormField
+                                type={FormFieldType.Password}
+                                label='Connection secret'
+                                value={this.state.secret}
+                                onChange={this.onSecretChange}
+                                icon={<FaUserSecret />}
+                                required
+                            />
+                            <FormField
+                                type={FormFieldType.Text}
+                                label='Account id'
+                                value={this.state.secret}
+                                onChange={this.onAccountIdChange}
+                                icon={<MdPermIdentity />}
+                                required
+                            />
+                        </div>
+                        <div className={'padding-md'}>
+                            <Button decoration={ButtonDecoration.Primary} type="submit">Add</Button>
+                        </div>
+                    </form>
+                </div>): undefined
+        );
     }
 
     private triggerAdd() {

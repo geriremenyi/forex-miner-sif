@@ -1,5 +1,5 @@
-import { IConnection } from "~api/contracts/connection";
-import { AddConnectionStatus } from "~app/redux/states/connection";
+import { IConnection } from '~api/contracts/connection';
+import { AddConnectionStatus } from '~app/redux/states/connection';
 
 /**
  * Connection page component's properties

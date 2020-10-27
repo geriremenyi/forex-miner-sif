@@ -82,13 +82,13 @@ export class DashboardPage extends React.Component<IDashboardPageProps> {
                                     <TableBody>
                                         { (this.props.connections && this.props.connections.length > 0) ?
                                         this.props.connections?.[0]?.openTrades.map(trade => (
-                                        <TableRow key={trade.id}>
-                                            <TableCell className={styles.themedCol}>{trade.openTime.toString()}</TableCell>
-                                            <TableCell className={styles.themedCol}>{trade.id}</TableCell>
-                                            <TableCell className={styles.themedCol}>{trade.instrument}</TableCell>
-                                            <TableCell className={styles.themedCol} align='right'>{trade.price}</TableCell>
-                                            <TableCell className={styles.themedCol} align='right'>{trade.currentUnits}</TableCell>
-                                        </TableRow>
+                                            <TableRow key={trade.id}>
+                                                <TableCell className={styles.themedCol}>{trade.openTime.toString()}</TableCell>
+                                                <TableCell className={styles.themedCol}>{trade.id}</TableCell>
+                                                <TableCell className={styles.themedCol}>{trade.instrument}</TableCell>
+                                                <TableCell className={styles.themedCol} align='right'>{trade.price}</TableCell>
+                                                <TableCell className={styles.themedCol} align='right'>{trade.currentUnits}</TableCell>
+                                            </TableRow>
                                         )): undefined}
                                     </TableBody>
                                 </Table>
