@@ -1,9 +1,11 @@
+import { ActiveMenu } from '.';
+
 /**
  * Navigation component's properties
  */
 export interface INavigationProps {
     /**
-     * Logout function
+     * Currently active menu
      */
-    handleLogout: () => void
+    activeMenu: ActiveMenu;
 }

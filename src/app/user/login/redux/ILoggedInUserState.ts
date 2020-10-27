@@ -1,4 +1,4 @@
-import { IAuthenticatedUser } from '~api/contracts/user';
+import { ILoggedInUser } from '~api/contracts/user';
 
 /**
  * Logged in user state slice in global state
@@ -14,5 +14,5 @@ export interface ILoggedInUserState {
    * 
    * Only available if the isUserLoggedIn is true
    */
-  loggedInUser?: IAuthenticatedUser;
+  loggedInUser?: ILoggedInUser;
 }

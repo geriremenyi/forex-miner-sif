@@ -2,7 +2,7 @@ import { Observable, throwError } from 'rxjs';
 import { ajax } from 'rxjs/ajax';
 import { map, catchError} from 'rxjs/operators';
 import { IProblemDetails } from '~api/contracts/error/IProblemDetails';
-import { IAuthenticatedUser } from '~api/contracts/user';
+import { ILoggedInUser } from '~api/contracts/user';
 
 import { IHttpClient } from './IHttpClient';
 
@@ -59,7 +59,7 @@ export class HttpClient implements IHttpClient {
         
         return {
             'Content-Type': 'application/json',
-            'Authorization': user ? (JSON.parse(user) as IAuthenticatedUser).token : null
+            'Authorization': user ? (JSON.parse(user) as ILoggedInUser).token : null
         }; 
     }
 }

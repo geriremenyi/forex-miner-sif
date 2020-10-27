@@ -1,0 +1,30 @@
+@use 'src/style/spacing' as spacing;
+@use 'src/style/theme' as theme;
+
+:export {
+    iconSizeSmall: spacing.$icon-size-small;
+}
+
+.navigationItem {
+    display: flex;
+    height: 100%;
+    background-color: transparent;
+    line-height: auto;
+    text-decoration: none;
+    border: none;
+    outline: none;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: inherit;
+    transition: all .15s ease-in-out;
+    cursor: pointer;
+
+    &:hover {
+        background-color: rgba(0, 0, 0, .1);
+    }
+
+    &.active {
+        background-color: rgba(0, 0, 0, .1);
+    }
+}

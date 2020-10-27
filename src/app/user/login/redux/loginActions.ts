@@ -1,7 +1,7 @@
 import { createAction } from '@reduxjs/toolkit';
 import { IProblemDetails } from '~api/contracts/error/IProblemDetails';
 
-import { IAuthentication, IAuthenticatedUser, IRegistration, IUser } from '~api/contracts/user';
+import { IUserLogin, ILoggedInUser, IRegistration, IUser } from '~api/contracts/user';
 import { AsyncActionName } from '~common/types';
 
 /**
@@ -22,8 +22,8 @@ export const loginActionNames = {
  * Login actions which are either handled through a redux-observable or a login reducer
  */
 export const loginActions = {
-    loginStart: createAction<IAuthentication>(loginActionNames.LOGIN.START),
-    loginSuccess: createAction<IAuthenticatedUser>(loginActionNames.LOGIN.SUCCESS),
+    loginStart: createAction<IUserLogin>(loginActionNames.LOGIN.START),
+    loginSuccess: createAction<ILoggedInUser>(loginActionNames.LOGIN.SUCCESS),
     loginFailed: createAction<IProblemDetails>(loginActionNames.LOGIN.ERROR),
     logout: createAction<void>(loginActionNames.LOGOUT),
     registerStart: createAction<IRegistration>(loginActionNames.REGISTER.START),

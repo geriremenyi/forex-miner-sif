@@ -5,12 +5,12 @@ import { routerMiddleware } from 'connected-react-router';
 import { ApplicationEnvironment } from '~common/types';
 
 import { history, rootReducer, rootEpic } from '.';
-import { RootAction } from './RootAction';
+import { IRootAction } from './IRootAction';
 import { IRootState } from './IRootState';
 
 // Middlewares
 const routeMiddleware = routerMiddleware(history);
-const epicMiddleware = createEpicMiddleware<RootAction, RootAction, IRootState>();
+const epicMiddleware = createEpicMiddleware<IRootAction, IRootAction, IRootState>();
 const middlewares = [...getDefaultMiddleware(), routeMiddleware, epicMiddleware];
 
 // Configure
