@@ -1,0 +1,14 @@
+@use 'src/style/theme' as theme;
+
+.dashboard {
+    .openTradesTable {
+
+        .themedHeader {
+            background-color: rgba(0, 0, 0, .15);
+        }
+
+        .themedCol {
+            @include theme.color-it(theme.$prop-color, theme.$color-card-text);
+        }
+    }
+}

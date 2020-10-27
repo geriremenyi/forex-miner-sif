@@ -3,19 +3,19 @@ import { combineEpics, Epic, ofType } from 'redux-observable';
 import { of } from 'rxjs';
 import { ignoreElements, catchError, map, mergeMap, tap } from 'rxjs/operators';
 
-import { RootAction } from 'src/store/RootAction';
+import { IRootAction } from 'src/store/IRootAction';
 import { ApiClientFactory } from '~api/client';
-import { IAuthentication, IRegistration, IUser } from '~api/contracts/user';
+import { IUserLogin, IRegistration, IUser, ILoggedInUser } from '~api/contracts/user';
 import { notificationActions } from '~app/notification';
 import { generateRandomId } from '~common/functions/misc';
 import { NotificationType } from '~common/types/notification';
 import { IRootState, store } from '~store';
 import { loginActionNames, loginActions } from './loginActions';
 
-export const userLoginEpic: Epic<RootAction, RootAction, IRootState> = (action$) => action$.pipe(
+export const userLoginEpic: Epic<IRootAction, IRootAction, IRootState> = (action$) => action$.pipe(
     ofType(loginActionNames.LOGIN.START),
     mergeMap(action =>
-        ApiClientFactory.getServerApi().login(action.payload as IAuthentication).pipe(
+        ApiClientFactory.getServerApi().login(action.payload as IUserLogin).pipe(
             map(user => {
                 localStorage.setItem('user', JSON.stringify(user));
                 return loginActions.loginSuccess(user);
@@ -25,13 +25,20 @@ export const userLoginEpic: Epic<RootAction, RootAction, IRootState> = (action$)
     )
 );
 
-export const successfulLoginRedirectEpic: Epic<RootAction, RootAction, IRootState> = (action$) => action$.pipe(
+export const successfulLoginRedirectEpic: Epic<IRootAction, IRootAction, IRootState> = (action$) => action$.pipe(
     ofType(loginActionNames.LOGIN.SUCCESS),
-    tap(() => store.dispatch(push('/'))),
+    tap((action) => {
+        if((action.payload as ILoggedInUser).hasConnections) {
+            store.dispatch(push('/'));
+        } else {
+            store.dispatch(push('/connections'));
+        }
+
+    }),
     ignoreElements()
 );
 
-export const userRegisterEpic: Epic<RootAction, RootAction, IRootState> = (action$) => action$.pipe(
+export const userRegisterEpic: Epic<IRootAction, IRootAction, IRootState> = (action$) => action$.pipe(
     ofType(loginActionNames.REGISTER.START),
     mergeMap(action =>
         ApiClientFactory.getServerApi().register(action.payload as IRegistration).pipe(
@@ -41,7 +48,7 @@ export const userRegisterEpic: Epic<RootAction, RootAction, IRootState> = (actio
     )
 );
 
-export const successfulRegisterRedirectEpic: Epic<RootAction, RootAction, IRootState> = (action$) => action$.pipe(
+export const successfulRegisterRedirectEpic: Epic<IRootAction, IRootAction, IRootState> = (action$) => action$.pipe(
     ofType(loginActionNames.REGISTER.SUCCESS),
     tap((user) => {
         const registeredUser = user.payload as IUser;
@@ -55,7 +62,7 @@ export const successfulRegisterRedirectEpic: Epic<RootAction, RootAction, IRootS
     ignoreElements()
 );
 
-export const logoutRedirectEpic: Epic<RootAction, RootAction, IRootState> = (action$) => action$.pipe(
+export const logoutRedirectEpic: Epic<IRootAction, IRootAction, IRootState> = (action$) => action$.pipe(
     ofType(loginActionNames.LOGOUT),
     tap(() => {
         localStorage.removeItem('user');

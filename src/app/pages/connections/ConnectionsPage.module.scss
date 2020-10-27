@@ -1,0 +1,52 @@
+@use 'src/style/theme' as theme;
+@use 'src/style/spacing' as spacing;
+
+// SCSS variables exposed to the react component
+:export {
+    iconSizeExtraLarge: spacing.$icon-size-extra-large;
+}
+
+.connections {
+
+    .addBrokerButton {
+        display: block;
+        height: auto;
+        line-height: inherit;
+        background-color: transparent;
+        max-height: initial;
+        cursor: pointer;
+        @include theme.color-it(theme.$prop-color, theme.$color-card-text);
+    }
+
+    .addConnection {
+
+        .brokerSelector {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: center;
+
+            .brokerSelectorIcon {
+                width: 150px;
+                height: 150px;
+            }
+        }
+    }
+
+    .existingBroker {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+
+        .brokerName {
+            font-size: 30px;
+        }
+
+        .brokerIcon {
+            width: 200px;
+            height: 200px;
+        }
+    }
+}

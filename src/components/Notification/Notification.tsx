@@ -51,7 +51,7 @@ export class Notification extends React.Component<INotificationProps, INotificat
             <div className={`${styles.notification} ${this.getClass()} ${ this.state.status === NotificationStatus.Arriving ? styles.arriving : '' } ${ this.state.status === NotificationStatus.Leaving ? styles.leaving : '' } margin-bottom-md`}>
                 <div className={styles.notificationBody}>
                     <span className={`${styles.notificationIcon} padding-sm`}>
-                        <IconContext.Provider value={{ size: styles.iconSizeBig }}>
+                        <IconContext.Provider value={{ size: styles.iconSizeLarge }}>
                             { this.getIcon() }
                         </IconContext.Provider>
                     </span>

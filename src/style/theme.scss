@@ -25,53 +25,81 @@ $color-login-switch-panel: 'colorLoginSidePanel';
 $color-login-switch-panel-text: 'colorLoginSidePanelText';
 $color-login-switch-panel-button: 'colorLoginSidePanelButton';
 $color-login-switch-panel-button-text: 'colorLoginSidePanelButtonText';
+$color-navbar: 'colorNavbar';
+$color-navbar-text: 'colorNavbarText';
+$color-card: 'colorCard';
+$color-card-text: 'colorCardText';
 
 // Colorable properties
 $prop-background-color: 'background-color';
 $prop-color: 'color';
 $prop-border-color: 'border-color';
 
+// Color palette
+$palette-primary: #4285F4;
+$palette-primary-dark: #3A76F8;
+$palette-primary-deep-dark: #3367BD;
+$palette-info: #0099CC;
+$palette-warning: #FF8800;
+$palette-error: #CC0000;
+$palette-success: #007E33;
+$palette-white: #FFFFFF;
+$palette-extra-light-grey: #F1F5F9;
+$palette-light-grey: #EEEEEE;
+$palette-grey: #64748B;
+$palette-dark-blue:  #27303F;
+$palette-extra-dark-blue: #1A202E;
+$palette-black-light-opacity: rgba(0, 0, 0, .05);
+
 // Colors per theme
 $theme-colors: (
     $light: (
-        $color-background: #F1F5F9,
-        $color-text: #27303F,
-        $color-primary: #4285F4,
-        $color-primary-dark: #3A76F8,
-        $color-primary-deep-dark: #3367BD,
-        $color-primary-text: #F0F5FF,
-        $color-info: #0099CC,
-        $color-warning: #FF8800,
-        $color-error: #CC0000,
-        $color-success: #007E33,
-        $color-notification-text: #FFFFFF,
-        $color-notification-text-dark: #EEEEEE,
-        $color-input-background: #FFFFFF,
-        $color-input-border: #CFD8E3,
-        $color-login-switch-panel: #4285F4,
-        $color-login-switch-panel-text: #F0F5FF,
-        $color-login-switch-panel-button: #F1F5F9,
-        $color-login-switch-panel-button-text: #27303F
+        $color-background: $palette-extra-light-grey,
+        $color-text: $palette-dark-blue,
+        $color-primary: $palette-primary,
+        $color-primary-dark: $palette-primary-dark,
+        $color-primary-deep-dark: $palette-primary-deep-dark,
+        $color-primary-text: $palette-extra-light-grey,
+        $color-info: $palette-info,
+        $color-warning: $palette-warning,
+        $color-error: $palette-error,
+        $color-success: $palette-success,
+        $color-notification-text: $palette-white,
+        $color-notification-text-dark: $palette-light-grey,
+        $color-input-background: $palette-white,
+        $color-input-border: $palette-grey,
+        $color-login-switch-panel:$palette-primary,
+        $color-login-switch-panel-text: $palette-extra-light-grey,
+        $color-login-switch-panel-button: $palette-extra-light-grey,
+        $color-login-switch-panel-button-text: $palette-dark-blue,
+        $color-navbar: $palette-primary-dark,
+        $color-navbar-text: $palette-white,
+        $color-card: $palette-white,
+        $color-card-text: $palette-dark-blue
     ),
     $dark: (
-        $color-background: #1A202E,
-        $color-text: #FFFFFF,
-        $color-primary: #4285F4,
-        $color-primary-dark: #3A76F8,
-        $color-primary-deep-dark: #3367BD,
-        $color-primary-text: #F0F5FF,
-        $color-info: #0099CC,
-        $color-warning: #FF8800,
-        $color-error: 	#CC0000,
-        $color-success: #007E33,
-        $color-notification-text: #FFFFFF,
-        $color-notification-text-dark: #EEEEEE,
-        $color-input-background: rgba(0, 0, 0, .05),
-        $color-input-border: #64748B,
-        $color-login-switch-panel: #27303F,
-        $color-login-switch-panel-text: #FFFFFF,
-        $color-login-switch-panel-button: #4285F4,
-        $color-login-switch-panel-button-text: #F0F5FF
+        $color-background: $palette-extra-dark-blue,
+        $color-text: $palette-white,
+        $color-primary: $palette-primary,
+        $color-primary-dark: $palette-primary-dark,
+        $color-primary-deep-dark: $palette-primary-deep-dark,
+        $color-primary-text: $palette-extra-light-grey,
+        $color-info: $palette-info,
+        $color-warning: $palette-warning,
+        $color-error: $palette-error,
+        $color-success: $palette-success,
+        $color-notification-text:$palette-white,
+        $color-notification-text-dark: $palette-light-grey,
+        $color-input-background: $palette-black-light-opacity,
+        $color-input-border: $palette-grey,
+        $color-login-switch-panel: $palette-dark-blue,
+        $color-login-switch-panel-text: $palette-white,
+        $color-login-switch-panel-button: $palette-primary,
+        $color-login-switch-panel-button-text: $palette-extra-light-grey,
+        $color-navbar: $palette-dark-blue,
+        $color-navbar-text: $palette-white,
+        $color-card: $palette-dark-blue,
+        $color-card-text: $palette-white
     )
 );
 

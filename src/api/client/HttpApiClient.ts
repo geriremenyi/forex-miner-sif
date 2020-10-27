@@ -1,9 +1,13 @@
 import { Observable } from 'rxjs';
 
 import { IHttpClient } from '~api/http';
-import { IAuthentication, IAuthenticatedUser, IRegistration, IUser } from '~api/contracts/user';
+import { IUserLogin, ILoggedInUser, IRegistration, IUser } from '~api/contracts/user';
 
 import { IApiClient } from '.';
+import { IConnection, IConnectionCreation } from '~api/contracts/connection';
+import { ITradeSignal } from '~api/contracts/trade';
+import { IConnectionTest } from '~api/contracts/connection/IConnectionTest';
+import { IConnectionTestResults } from '~api/contracts/connection/IConnectionTestResults';
 
 /**
  * An {@link IApiClient} which actually connects to the API via HTTP REST calls.
@@ -34,8 +38,8 @@ export class HttpApiClient implements IApiClient {
      * @param auth Authentication object containing the emaill address and password.
      * @returns {@link https://rxjs-dev.firebaseapp.com/guide/observable | Observable} which emmits the logged in user details on successful login.
      */
-    public login(auth: IAuthentication): Observable<IAuthenticatedUser> {
-        return this.httpClient.post<IAuthentication, IAuthenticatedUser>(
+    public login(auth: IUserLogin): Observable<ILoggedInUser> {
+        return this.httpClient.post<IUserLogin, ILoggedInUser>(
             `${this.getEndpoint('users/authenticate')}`,
             auth
         );
@@ -52,6 +56,50 @@ export class HttpApiClient implements IApiClient {
             `${this.getEndpoint('users')}`,
             registration
         );
+    }
+
+    /**
+     * Test a connection.
+     * 
+     * @param connectionTest The connection object to test.
+     * @returns {@link https://rxjs-dev.firebaseapp.com/guide/observable | Observable} which emmits the connection test results on success.
+     */
+    testConnection(connectionTest: IConnectionTest): Observable<IConnectionTestResults> {
+        return this.httpClient.post<IConnectionTest, IConnectionTestResults>(
+            `${this.getEndpoint('users/me/connections/test')}`,
+            connectionTest
+        );
+    }
+
+    /**
+     * Create a connection.
+     * 
+     * @param connection Connection to create.
+     * @returns {@link https://rxjs-dev.firebaseapp.com/guide/observable | Observable} which emmits the craeted connection on success.
+     */
+    createConnection(connection: IConnectionCreation): Observable<IConnection> {
+        return this.httpClient.post<IConnectionCreation, IConnection>(
+            `${this.getEndpoint('users/me/connections')}`,
+            connection
+        );
+    }
+
+    /**
+     * Get all connections for the logged in user.
+     * 
+     * @returns {@link https://rxjs-dev.firebaseapp.com/guide/observable | Observable} which emmits the array of connections on successful get.
+     */
+    getConnections(): Observable<IConnection[]> {
+        return this.httpClient.get<IConnection[]>(`${this.getEndpoint('/users/me/connections')}`);
+    }
+
+    /**
+     * Get trade signals.
+     * 
+     * @returns {@link https://rxjs-dev.firebaseapp.com/guide/observable | Observable} which emmits the array of trade signals on successful get.
+     */
+    getTradeSignals(): Observable<ITradeSignal[]> {
+        return this.httpClient.get<ITradeSignal[]>(`${this.getEndpoint('/users/me/connections/trade-signals')}`);
     }
 
     /**

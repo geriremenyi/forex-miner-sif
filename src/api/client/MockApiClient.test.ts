@@ -1,4 +1,4 @@
-import { IAuthentication } from '~api/contracts/user';
+import { IUserLogin } from '~api/contracts/user';
 
 import { IApiClient, MockApiClient } from '.';
 
@@ -13,7 +13,7 @@ describe(MockApiClient.name, () => {
     describe('login', () => {
         it('should successfully login with the hardcoded username and password', (done) => {
             // Arrange
-            const auth: IAuthentication = {
+            const auth: IUserLogin = {
                 email: 'test@forex-miner.com',
                 password: 'TopSecretPass!4'
             };
@@ -37,7 +37,7 @@ describe(MockApiClient.name, () => {
 
         it('should fail to login with any other credentials', (done) => {
             // Arrange
-            const auth: IAuthentication = {
+            const auth: IUserLogin = {
                 email: 'invalid-test@forex-miner.com',
                 password: 'IHaveNoIdea!4'
             };
