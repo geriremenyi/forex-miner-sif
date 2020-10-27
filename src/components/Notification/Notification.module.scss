@@ -1,0 +1,85 @@
+@use 'src/style/spacing' as spacing;
+@use 'src/style/theme' as theme;
+
+:export {
+    iconSizeSmall: spacing.$icon-size-small;
+    iconSizeLarge: spacing.$icon-size-large;
+}
+
+.notification {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    @include theme.color-it(theme.$prop-color, theme.$color-notification-text);
+    box-shadow: 0 2px 5px rgba(0,0,0,.26);
+    opacity: 1;
+    transition: .3s ease-in-out;
+
+    .notificationBody {
+        display: flex;
+        flex-direction: row;
+
+        .notificationIcon {
+            background-color: rgba(0, 0, 0, .5);
+            align-self: center;
+        }
+
+        .notificationText {
+            align-self: center;
+        }
+    }
+
+    .notificationRemove {
+        transition: color .1s ease-in;
+        color: rgba(255, 255, 255, .5);
+        margin-left: auto;
+        cursor: pointer;
+        align-self: center;
+    }
+
+    .notificationRemove:hover {
+        color: rgba(255, 255, 255, .7);
+    }
+}
+
+.notification.info {
+    @include theme.color-it(theme.$prop-background-color, theme.$color-info);
+
+    .notificationIcon {
+        @include theme.color-it(theme.$prop-color, theme.$color-info);
+    }
+}
+
+.notification.warning {
+    @include theme.color-it(theme.$prop-background-color, theme.$color-warning);
+
+    .notificationIcon {
+        @include theme.color-it(theme.$prop-color, theme.$color-warning);
+    }
+}
+
+.notification.error {
+    @include theme.color-it(theme.$prop-background-color, theme.$color-error);
+
+    .notificationIcon {
+        @include theme.color-it(theme.$prop-color, theme.$color-error);
+    }
+}
+
+.notification.success {
+    @include theme.color-it(theme.$prop-background-color, theme.$color-success);
+
+    .notificationIcon {
+        @include theme.color-it(theme.$prop-color, theme.$color-success);
+    }
+}
+
+.notification.arriving {
+    margin-bottom: -56px; // TODO
+    opacity: 0;
+}
+
+.notification.leaving {
+    margin-bottom: -56px; // TODO
+    opacity: 0;
+}

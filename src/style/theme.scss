@@ -1,0 +1,123 @@
+///////////////
+// Variables //
+///////////////
+
+// Themes
+$light: 'light';
+$dark: 'dark';
+
+// Color names
+$color-background: 'colorBackground';
+$color-text: 'colorText';
+$color-primary: 'colorPrimary';
+$color-primary-dark: 'colorPrimaryDark';
+$color-primary-deep-dark: 'colorPrimaryDeepDark';
+$color-primary-text: 'colorPrimaryText';
+$color-info: 'colorInfo';
+$color-warning: 'colorWarning';
+$color-error: 'colorError';
+$color-success: 'colorSuccess';
+$color-notification-text: 'colorNotificationText';
+$color-notification-text-dark: 'colorNotificationTextDark';
+$color-input-background: 'colorInputBackground';
+$color-input-border: 'colorInputBorder';
+$color-login-switch-panel: 'colorLoginSidePanel';
+$color-login-switch-panel-text: 'colorLoginSidePanelText';
+$color-login-switch-panel-button: 'colorLoginSidePanelButton';
+$color-login-switch-panel-button-text: 'colorLoginSidePanelButtonText';
+$color-navbar: 'colorNavbar';
+$color-navbar-text: 'colorNavbarText';
+$color-card: 'colorCard';
+$color-card-text: 'colorCardText';
+
+// Colorable properties
+$prop-background-color: 'background-color';
+$prop-color: 'color';
+$prop-border-color: 'border-color';
+
+// Color palette
+$palette-primary: #4285F4;
+$palette-primary-dark: #3A76F8;
+$palette-primary-deep-dark: #3367BD;
+$palette-info: #0099CC;
+$palette-warning: #FF8800;
+$palette-error: #CC0000;
+$palette-success: #007E33;
+$palette-white: #FFFFFF;
+$palette-extra-light-grey: #F1F5F9;
+$palette-light-grey: #EEEEEE;
+$palette-grey: #64748B;
+$palette-dark-blue:  #27303F;
+$palette-extra-dark-blue: #1A202E;
+$palette-black-light-opacity: rgba(0, 0, 0, .05);
+
+// Colors per theme
+$theme-colors: (
+    $light: (
+        $color-background: $palette-extra-light-grey,
+        $color-text: $palette-dark-blue,
+        $color-primary: $palette-primary,
+        $color-primary-dark: $palette-primary-dark,
+        $color-primary-deep-dark: $palette-primary-deep-dark,
+        $color-primary-text: $palette-extra-light-grey,
+        $color-info: $palette-info,
+        $color-warning: $palette-warning,
+        $color-error: $palette-error,
+        $color-success: $palette-success,
+        $color-notification-text: $palette-white,
+        $color-notification-text-dark: $palette-light-grey,
+        $color-input-background: $palette-white,
+        $color-input-border: $palette-grey,
+        $color-login-switch-panel:$palette-primary,
+        $color-login-switch-panel-text: $palette-extra-light-grey,
+        $color-login-switch-panel-button: $palette-extra-light-grey,
+        $color-login-switch-panel-button-text: $palette-dark-blue,
+        $color-navbar: $palette-primary-dark,
+        $color-navbar-text: $palette-white,
+        $color-card: $palette-white,
+        $color-card-text: $palette-dark-blue
+    ),
+    $dark: (
+        $color-background: $palette-extra-dark-blue,
+        $color-text: $palette-white,
+        $color-primary: $palette-primary,
+        $color-primary-dark: $palette-primary-dark,
+        $color-primary-deep-dark: $palette-primary-deep-dark,
+        $color-primary-text: $palette-extra-light-grey,
+        $color-info: $palette-info,
+        $color-warning: $palette-warning,
+        $color-error: $palette-error,
+        $color-success: $palette-success,
+        $color-notification-text:$palette-white,
+        $color-notification-text-dark: $palette-light-grey,
+        $color-input-background: $palette-black-light-opacity,
+        $color-input-border: $palette-grey,
+        $color-login-switch-panel: $palette-dark-blue,
+        $color-login-switch-panel-text: $palette-white,
+        $color-login-switch-panel-button: $palette-primary,
+        $color-login-switch-panel-button-text: $palette-extra-light-grey,
+        $color-navbar: $palette-dark-blue,
+        $color-navbar-text: $palette-white,
+        $color-card: $palette-dark-blue,
+        $color-card-text: $palette-white
+    )
+);
+
+////////////
+// Mixins //
+////////////
+
+// Set theme specific properties
+@mixin color-it($property, $color) {
+    $light-color: map-get(map-get($theme-colors, $light), $color);
+    @if $light-color {
+        #{$property}: $light-color;
+    }
+
+    $dark-color: map-get(map-get($theme-colors, $dark), $color);
+    @if $dark-color {
+        @media(prefers-color-scheme: dark) {
+            #{$property}: $dark-color;
+        }
+    }
+}

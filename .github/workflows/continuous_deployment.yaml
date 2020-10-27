@@ -1,0 +1,168 @@
+name: Continuous Deployment
+on:
+  push:
+    branches:
+      - master
+jobs:
+  lint:
+    name: Check lint
+    runs-on: ubuntu-latest
+    steps:
+      - name: Setup node 14
+        uses: actions/setup-node@v1
+        with:
+          node-version: 14
+
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Cache node modules
+        uses: actions/cache@v2
+        env:
+          cache-name: cache-node-modules
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-build-${{ env.cache-name }}-
+            ${{ runner.os }}-build-
+            ${{ runner.os }}-
+
+      - name: Install dependencies
+        run: yarn --frozen-lockfile
+
+      - name: Lint
+        run: npm run lint:check
+  test:
+    name: Run tests
+    runs-on: ubuntu-latest
+    steps:
+      - name: Setup node 12
+        uses: actions/setup-node@v1
+        with:
+          node-version: 12
+
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Cache node modules
+        uses: actions/cache@v2
+        env:
+          cache-name: cache-node-modules
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-build-${{ env.cache-name }}-
+            ${{ runner.os }}-build-
+            ${{ runner.os }}-
+
+      - name: Install dependencies
+        run: yarn --frozen-lockfile
+
+      - name: Test
+        run: npm run test --watchAll=false
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Setup node 12
+        uses: actions/setup-node@v1
+        with:
+          node-version: 12
+
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Cache node modules
+        uses: actions/cache@v2
+        env:
+          cache-name: cache-node-modules
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-build-${{ env.cache-name }}-
+            ${{ runner.os }}-build-
+            ${{ runner.os }}-
+
+      - name: Install dependencies
+        run: yarn --frozen-lockfile
+
+      - name: Build
+        run: npm run build
+  release:
+    name: Tag and release
+    needs: [lint, test, build]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Get version
+        id: package-version
+        uses: martinbeentjes/npm-get-version-action@master
+
+      - name: Create Release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: ${{ steps.package-version.outputs.current-version}}
+          release_name: ${{ steps.package-version.outputs.current-version}}
+          draft: false
+          prerelease: false
+      
+      - name: Set up QEMU
+        uses: docker/setup-qemu-action@v1
+      
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v1
+
+      - name: Login to ghcr
+        uses: docker/login-action@v1
+        with:
+          registry: ghcr.io
+          username: ${{ github.repository_owner }}
+          password: ${{ secrets.PAT }}
+
+      - name: Publish Docker Image
+        uses: docker/build-push-action@v2
+        with:
+          context: .
+          push: true
+          tags: |
+            ghcr.io/geriremenyi/forex-miner-sif:${{ steps.package-version.outputs.current-version }}
+            ghcr.io/geriremenyi/forex-miner-sif:latest
+  deploy:
+    name: Deploy
+    needs: [release]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Checkout IaaC
+        uses: actions/checkout@v2
+        with:
+          repository: geriremenyi/forex-miner-asgard
+          ref: master
+          path: forex-miner-asgard
+          token: ${{ secrets.GH_PAT }}
+
+      - name: Connect to AKS
+        working-directory: forex-miner-asgard
+        shell: pwsh
+        run: |
+          ./init.ps1 -ApplicationId "${{ secrets.AZURE_APPLICATION_ID }}" -Secret "${{ secrets.AZURE_SECRET }}" -Tenant "${{ secrets.AZURE_TENANT }}"
+          Connect-AKSCluster
+
+      - name: Deploy to AKS
+        shell: pwsh
+        working-directory: forex-miner-asgard
+        run: |
+          ./init.ps1
+          kubectl create secret docker-registry ghcr-secret --namespace=forex-miner --docker-server=https://ghcr.io/ --docker-username=notneeded --docker-password=${{ secrets.GH_PAT }}
+          Deploy-KubernetesResource -ResourceYamlFileName 'app.yaml' -ResourceFolder '../k8s'
+          Deploy-KubernetesResource -ResourceYamlFileName 'service.yaml' -ResourceFolder '../k8s'
+      

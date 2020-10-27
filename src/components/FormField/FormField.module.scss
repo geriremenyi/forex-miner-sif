@@ -1,0 +1,72 @@
+@use 'src/style/theme' as theme;
+@use 'src/style/spacing' as spacing;
+
+// SCSS variables exposed to the react component
+:export {
+    iconSize: spacing.$icon-size-small;
+}
+
+.formFieldWrapper {
+    display: flex;
+    flex-direction: column;
+    padding: 8px;
+
+    .labelWrapper {
+        display: flex;
+
+        label {
+            display: flex;
+            margin-bottom: 8px;
+        }
+    }
+
+    .inputWrapper {
+        position: relative;
+        display: flex;
+        border-radius: 6px;
+        cursor: text;
+
+        .iconWrapper {
+            display: flex;
+            align-items: center;
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 45px;
+            padding-left: 8px;
+            @include theme.color-it(theme.$prop-color, theme.$color-text);
+        }
+
+        input {
+            display: flex;
+            width: 100%;
+            box-sizing: border-box;
+            padding: 14px 16px;
+            border-radius: 6px;
+            border: 0;
+            outline: 0;
+            border-width: 1px;
+            border-style: solid;
+            @include theme.color-it(theme.$prop-background-color, theme.$color-input-background);
+            @include theme.color-it(theme.$prop-color, theme.$color-text);
+            @include theme.color-it(theme.$prop-border-color, theme.$color-input-border);
+
+        }
+
+        .iconWrapper+input {
+            padding-left: 48px;
+        }
+
+        .passwordIconWrapper {
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            position: absolute;
+            top: 0;
+            right: 0;
+            height: 45px;
+            padding-right: 8px;
+            @include theme.color-it(theme.$prop-color, theme.$color-text);
+        }
+    }
+}

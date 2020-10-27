@@ -1,0 +1,33 @@
+@use 'src/style/theme' as theme;
+
+.navigation {
+    position: fixed;
+    display: flex;
+    width: 100%;
+    height: 70px;
+    @include theme.color-it(theme.$prop-background-color, theme.$color-navbar);
+    @include theme.color-it(theme.$prop-color, theme.$color-navbar-text);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, .1), 0 2px 4px -1px rgba(0, 0, 0, .5); // TODO: export this
+    z-index: 900;
+
+    nav {
+        display: flex;
+        width: 100%;
+        height: 100%;
+
+        .navigationItemContainer {
+            display: flex;
+            height: 100%;
+
+            .logoIcon {
+                display: flex;
+                height: 100%;
+                width: 60px; // TODO
+            }
+        }
+
+        .navigationItemContainer.navLeft {
+            margin-left: auto;
+        }
+    }
+}

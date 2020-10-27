@@ -1,0 +1,92 @@
+@use "sass:list";
+@use "sass:map";
+@use 'src/style/spacing' as spacing;
+
+///////////////
+// Variables //
+///////////////
+
+// Columns
+$column-numbers: 12;
+
+///////////////
+// Functions //
+///////////////
+
+@function get-flex-basis-percentage($col-size) {
+    @if ($col-size == 0) {
+        @return 0;
+    }
+
+    @return percentage(((100 / $column-numbers) * $col-size) / 100);
+}
+
+@function get-col-size-suffix($col-size) {
+    @if ($col-size == 0) {
+        @return '';
+    } 
+
+    @return '-#{$col-size}';
+}
+
+////////////
+// Mixins //
+////////////
+
+// Container properties generator
+@mixin generate-container-properties() {
+    padding-right: spacing.get-spacing-px(spacing.$size-medium);
+    padding-left: spacing.get-spacing-px(spacing.$size-medium);
+    margin-right: auto;
+    margin-left: auto;
+}
+
+// Row properties generator
+@mixin generate-row-properties() {
+    display: flex;
+    flex-wrap: wrap;
+    margin-right: (spacing.get-spacing(spacing.$size-medium) * -1) * 1px;
+    margin-left: (spacing.get-spacing(spacing.$size-medium) * -1 ) * 1px;
+}
+
+// Col generator
+@mixin generate-cols() {
+    // Base
+    %flex-properties {
+        flex: 1 1 100%;
+        max-width: 100%;
+    }
+    @each $size in map.keys( spacing.$breakpoints) {
+        @for $i from 0 through $column-numbers {
+            .col-#{$size}#{get-col-size-suffix($i)} {
+               @extend %flex-properties;
+            }
+        }
+    }
+
+    // Extra small
+    @for $i from 0 through $column-numbers {
+        $flex-percentage: get-flex-basis-percentage($i);
+        .col-xs#{get-col-size-suffix($i)} {
+            flex: 1 1 $flex-percentage;
+            @if ($i != 0) {
+                max-width: $flex-percentage;
+            }
+        }
+    }
+
+    // Media min-width
+    @each $size, $min-width in spacing.$breakpoints {
+        @media(min-width: $min-width) {
+            @for $i from 0 through $column-numbers {
+                $flex-percentage: get-flex-basis-percentage($i);
+                .col-#{$size}#{get-col-size-suffix($i)} {
+                    flex: 1 1 $flex-percentage;
+                    @if ($i != 0) {
+                        max-width: $flex-percentage;
+                    }
+                }
+            }
+        }
+    }
+}

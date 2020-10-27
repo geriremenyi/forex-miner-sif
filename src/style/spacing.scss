@@ -1,0 +1,136 @@
+@use "sass:list";
+@use "sass:map";
+
+///////////////
+// Variables //
+///////////////
+
+// Sizes
+$size-extra-small: 'xs';
+$size-small: 'sm';
+$size-medium: 'md';
+$size-large: 'lg';
+$size-extra-large: 'xl';
+
+$sizes: (
+    $size-extra-small,
+    $size-small,
+    $size-medium,
+    $size-large,
+    $size-extra-large
+);
+
+// Media breakpoints (min-width)
+$breakpoints: (
+    $size-small: 576px,
+    $size-medium: 768px,
+    $size-large: 960px,
+    $size-extra-large: 1200px
+);
+
+// Spacing types
+$margin: 'margin';
+$padding: 'padding';
+
+$spacing-types: (
+    $margin,
+    $padding
+);
+
+
+// Spacing sizes
+$spacing-sizes: (
+    $size-extra-small: 4,
+    $size-small: 8,
+    $size-medium: 16,
+    $size-large: 32,
+    $size-extra-large: 64
+);
+
+// Directions
+$direction-nope: null;
+$direction-top: 'top';
+$direction-right: 'right';
+$direction-bottom: 'bottom';
+$direction-left: 'left';
+
+$spacing-directions: (
+    $direction-nope,
+    $direction-top,
+    $direction-right,
+    $direction-bottom,
+    $direction-left
+);
+
+// Misc
+$icon-size-small: 24px;
+$icon-size-large: 36px;
+$icon-size-extra-large: 48px;
+
+///////////////
+// Functions //
+///////////////
+
+// Get spacing size's numeric value
+@function get-spacing($spacing-size) {
+    $spacing-numeric: map.get($spacing-sizes, $spacing-size);
+
+    @if ($spacing-numeric) {
+        @return $spacing-numeric;
+    } @else {
+        @error 'Spacing size #{$spacing-size} not found.';
+    }
+}
+
+// Get spacing size in pixel
+@function get-spacing-px($spacing-size) {
+    @return (get-spacing($spacing-size)) * 1px;
+}
+
+////////////
+// Mixins //
+////////////
+
+// Generate spacing class
+@mixin generate-spacing-class($spacing-type, $spacing-size, $spacing-direction, $rtl-support: true) {
+    @if (list.index($spacing-types, $spacing-type)) {
+        @if (list.index($spacing-directions, $spacing-direction)) {
+            $spacing-px: get-spacing-px($spacing-size);
+    
+            @if ($spacing-direction == $direction-nope) {
+                .#{$spacing-type}-#{$spacing-size} {
+                    #{$spacing-type}: #{$spacing-px};
+                }
+            } @else {
+                .#{$spacing-type}-#{$spacing-direction}-#{$spacing-size} {
+                    #{$spacing-type}-#{$spacing-direction}: #{$spacing-px};
+                }
+    
+                @if $spacing-direction == $direction-right and $rtl-support {
+                    .rtl .#{$spacing-type}-#{$spacing-direction}-#{$spacing-size} {
+                        #{$spacing-type}-#{$direction-left}: #{$spacing-px};
+                    }
+                } @else if $spacing-direction == $direction-left and $rtl-support {
+                    .rtl .#{$spacing-type}-#{$spacing-direction}-#{$spacing-size} {
+                        #{$spacing-type}-#{$direction-right}: #{$spacing-px};
+                    }
+                }
+            }
+        } @else {
+            @error 'Invalid direction #{$spacing-direction}';
+        }
+    } @else {
+        @error 'Invalid spacing type #{$spacing-type}';
+    }
+}
+
+// Generate all spacing classes
+@mixin generate-spacing-classes($rtl-support: true) {
+    @each $spacing-type in $spacing-types {
+        @each $spacing-size in map.keys($spacing-sizes) {
+            @each $spacing-direction in $spacing-directions {
+                @include generate-spacing-class($spacing-type, $spacing-size, $spacing-direction, $rtl-support);
+            }
+        }
+    }
+}

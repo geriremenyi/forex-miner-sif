@@ -1,0 +1,31 @@
+@use 'src/style/theme' as theme;
+
+button {
+    display: block;
+    margin: auto;
+    outline: none;
+    border: none;
+    text-decoration: none;
+    cursor: pointer;
+    text-align: center;
+    padding: 0 16px;
+    height: 40px;
+    min-height: 40px;
+    max-height: 40px;
+    line-height: 40px;
+    border-radius: 4px;
+    transition: 0.3s;
+
+    &.primary {
+        @include theme.color-it(theme.$prop-background-color, theme.$color-primary);
+        @include theme.color-it(theme.$prop-color, theme.$color-primary-text);
+
+        &:hover {
+            @include theme.color-it(theme.$prop-background-color, theme.$color-primary-dark);
+        }
+
+        &:active {
+            @include theme.color-it(theme.$prop-background-color, theme.$color-primary-deep-dark);
+        }
+    }
+}
