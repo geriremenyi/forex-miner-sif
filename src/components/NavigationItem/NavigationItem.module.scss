@@ -8,8 +8,9 @@
 .navigationItem {
     display: flex;
     height: 100%;
+    max-height: initial;
+    line-height: initial;
     background-color: transparent;
-    line-height: auto;
     text-decoration: none;
     border: none;
     outline: none;

@@ -100,7 +100,7 @@ export class MockApiClient implements IApiClient {
      * @returns {@link https://rxjs-dev.firebaseapp.com/guide/observable | Observable} which emmits the craeted connection on success.
      */
     createConnection(connection: IConnectionCreation): Observable<IConnection> {
-        if(connection.broker == 'Oanda') {
+        if(connection.broker === 'Oanda') {
             return of({
                 id: 1234,
                 name: connection.name,

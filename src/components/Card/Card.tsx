@@ -11,16 +11,6 @@ import styles from './Card.module.scss';
  * Card react component implementation
  */
 export class Card extends React.Component<ICardProps> {
-
-    /**
-	 * Instance initialization
-	 * 
-	 * @param props Props of the card
-	 */
-    constructor(props: ICardProps) {
-        super(props);
-    }
-
     /**
 	 * The render function is responsible rendering the card component.
 	 * 

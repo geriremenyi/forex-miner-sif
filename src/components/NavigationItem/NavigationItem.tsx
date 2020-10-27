@@ -13,16 +13,6 @@ import styles from './NavigationItem.module.scss';
  * A navigation item component to include in the navigation
  */
 export class NavigationItem extends React.Component<INavigationItemProps> {
-
-    /**
-	 * Instance initialization
-	 * 
-	 * @param props Props of the navigation item
-	 */
-    constructor(props: INavigationItemProps) {
-        super(props);
-    }
-
     /**
 	 * The render function is responsible to render the navigation item component.
 	 * 
@@ -38,10 +28,10 @@ export class NavigationItem extends React.Component<INavigationItemProps> {
                 className={`padding-sm ${styles.navigationItem} ${this.props.isActive ? styles.active : ''}`} 
                 to={this.props.action}>{this.getNavigationInnerContent()}
             </Link>
-            : <a 
+            : <button 
                 className={`padding-sm ${styles.navigationItem} ${this.props.isActive ? styles.active : ''}`}
                 onClick={this.props.action}>{this.getNavigationInnerContent()}
-            </a>;
+            </button>;
 
         return navigationItem;
     }

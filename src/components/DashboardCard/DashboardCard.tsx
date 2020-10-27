@@ -13,16 +13,6 @@ import styles from './DashboardCard.module.scss';
  * A well styled card to show on top of dashboards
  */
 export class DashboardCard extends React.Component<IDashboardCardProps> {
-
-    /**
-	 * Instance initialization
-	 * 
-	 * @param props Props of the dashboard card
-	 */
-    constructor(props: IDashboardCardProps) {
-        super(props);
-    }
-
     /**
 	 * The render function is responsible to render the dashboard card component.
 	 * 
