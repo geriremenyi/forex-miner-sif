@@ -59,7 +59,7 @@ export class HttpClient implements IHttpClient {
         
         return {
             'Content-Type': 'application/json',
-            'Authorization': user ? (JSON.parse(user) as ILoggedInUser).token : null
+            'Authorization': `Bearer ${user ? (JSON.parse(user) as ILoggedInUser).token : null}`
         }; 
     }
 }
