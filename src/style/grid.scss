@@ -56,7 +56,7 @@ $column-numbers: 12;
         flex: 1 1 100%;
         max-width: 100%;
     }
-    @each $size in map.keys( spacing.$breakpoints) {
+    @each $size in map.keys(spacing.$breakpoints) {
         @for $i from 0 through $column-numbers {
             .col-#{$size}#{get-col-size-suffix($i)} {
                @extend %flex-properties;
