@@ -1,3 +1,5 @@
+/* istanbul ignore file */
+// LIbrary dependencies
 import { ReactNode } from 'react';
 
 /**

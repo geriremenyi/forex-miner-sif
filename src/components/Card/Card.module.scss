@@ -6,7 +6,7 @@
     width: 100%;
     @include theme.color-it(theme.$prop-background-color, theme.$color-card);
     @include theme.color-it(theme.$prop-color, theme.$color-card-text);
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, .1), 0 2px 4px -1px rgba(0, 0, 0, .5); // TODO: export this
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, .1), 0 2px 4px -1px rgba(0, 0, 0, .5);
     border-radius: spacing.get-spacing-px(spacing.$size-extra-small);
 
     .cardTitle {
@@ -15,9 +15,5 @@
         text-transform: uppercase;
         border-bottom: 1px solid;
         @include theme.color-it(theme.$prop-border-color, theme.$color-card-text);
-    }
-
-    .cardBody {
-
     }
 }
