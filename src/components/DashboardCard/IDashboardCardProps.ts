@@ -1,3 +1,5 @@
+/* istanbul ignore file */
+// Library dependencies
 import { ReactElement } from 'react';
 import { IconType } from 'react-icons/lib';
 

@@ -23,7 +23,7 @@ describe(Card.name, () => {
 
     it('renders title correctly', () => {
         // Arrange
-        const title = 'This is the card title'
+        const title = 'This is the card title';
 
         // Act
         const { container } = render(<Card title={title}></Card>);
@@ -36,8 +36,8 @@ describe(Card.name, () => {
 
     it('renders children correctly', () => {
         // Arrange
-        const childrenText = 'This is the children'
-        const children = <div>{childrenText}</div>
+        const childrenText = 'This is the children';
+        const children = <div>{childrenText}</div>;
 
         // Act
         const { container } = render(<Card>{children}</Card>);
