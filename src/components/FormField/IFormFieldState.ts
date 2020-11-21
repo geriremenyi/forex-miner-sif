@@ -1,4 +1,5 @@
 /* istanbul ignore file */
+// Local dependencies
 import { FormFieldType } from '.';
 
 /**
