@@ -15,7 +15,9 @@ describe(Notification.name, () => {
         const id = 'notifId';
         const type = NotificationType.Info;
         const text = 'This is the notification message';
-        const onRemove = () => {};
+        const onRemove = () => {
+            // Do nothing
+        };
 
         // Act
         const { container } = render(<Notification id={id} type={type} text={text} onRemove={onRemove}/>);
@@ -30,7 +32,9 @@ describe(Notification.name, () => {
         const id = 'notifId';
         const type = NotificationType.Warning;
         const text = 'This is the notification message';
-        const onRemove = () => {};
+        const onRemove = () => {
+            // Do nothing
+        };
 
         // Act
         const { container } = render(<Notification id={id} type={type} text={text} onRemove={onRemove}/>);
@@ -45,7 +49,9 @@ describe(Notification.name, () => {
         const id = 'notifId';
         const type = NotificationType.Error;
         const text = 'This is the notification message';
-        const onRemove = () => {};
+        const onRemove = () => {
+            // Do nothing
+        };
 
         // Act
         const { container } = render(<Notification id={id} type={type} text={text} onRemove={onRemove}/>);
@@ -60,7 +66,9 @@ describe(Notification.name, () => {
         const id = 'notifId';
         const type = NotificationType.Success;
         const text = 'This is the notification message';
-        const onRemove = () => {};
+        const onRemove = () => {
+            // Do nothing
+        };
 
         // Act
         const { container } = render(<Notification id={id} type={type} text={text} onRemove={onRemove}/>);

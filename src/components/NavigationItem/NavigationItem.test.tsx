@@ -23,7 +23,9 @@ describe(NavigationItem.name, () => {
 
     it('renders button correctly', () => {
         // Arrange
-        const action = () => {};
+        const action = () => {
+            // Do nothing
+        };
 
         // Act
         const { container } = render(<Provider store={store}><ConnectedRouter history={history}><NavigationItem action={action} /></ConnectedRouter></Provider>);
