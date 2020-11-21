@@ -16,7 +16,7 @@ const loginFailedNotificationEpic: Epic<IRootAction, IRootAction, IRootState> = 
     ofType(loginActionNames.LOGIN.ERROR),
     tap((error) => store.dispatch(notificationActions.add({
         id: generateRandomId(),
-        text: (error.payload as IProblemDetails) == null ? unknownError : (error.payload as IProblemDetails).detail ?? (error.payload as IProblemDetails).title,
+        text: (error?.payload as IProblemDetails) == null ? unknownError : (error.payload as IProblemDetails).detail ?? (error.payload as IProblemDetails).title,
         type: NotificationType.Error
     }))),
     ignoreElements()
@@ -26,7 +26,7 @@ const registerFailedNotificationEpic: Epic<IRootAction, IRootAction, IRootState>
     ofType(loginActionNames.REGISTER.ERROR),
     tap((error) => store.dispatch(notificationActions.add({
         id: generateRandomId(),
-        text: (error.payload as IProblemDetails) == null ? unknownError : (error.payload as IProblemDetails).detail ?? (error.payload as IProblemDetails).title,
+        text: (error?.payload as IProblemDetails) == null ? unknownError : (error.payload as IProblemDetails).detail ?? (error.payload as IProblemDetails).title,
         type: NotificationType.Error
     }))),
     ignoreElements()
