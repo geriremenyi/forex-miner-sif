@@ -37,7 +37,7 @@ export class LoginForm extends React.Component<ILoginFormProps, ILoginFormState>
                     <div className='col-lg-8'>
                         <div className={`${styles.loginWrapperContainer} ${!isLoginFormActive(this.props.activeForm) ? styles.slideOut : ''}`} >
                             <div className={styles.loginWrapper}>
-                                <h1>Login To Yout Account</h1>
+                                <h1>Login To Your Account</h1>
                                 <form onSubmit={this.onLoginFormSubmit}>
                                     <FormField 
                                         type={FormFieldType.Email} 

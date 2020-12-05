@@ -6,6 +6,8 @@ import { Table, TableBody, TableCell, TableHead, TableRow } from '@material-ui/c
 import { store } from '~store';
 import { tradeSignalActions } from '~app/redux/actions/trade';
 
+import styles from './TradeSignals.module.scss';
+
 export class TradeSignalsPage extends React.Component<ITradeSignalsPageProps> {
 
     public constructor(props: ITradeSignalsPageProps) {
@@ -19,26 +21,26 @@ export class TradeSignalsPage extends React.Component<ITradeSignalsPageProps> {
     public render(): React.ReactNode {
         return (
             <>
-                <div className={'container-fluid'} >
+                <div className={`${styles.tradeSignals} container-fluid`} >
                     <div className={'row'}>
                         <div className='col-xs-12 padding-md'>
                             <Card title="Trade Signals">
-                                <Table>
-                                    <TableHead>
+                                <Table className={`${styles.tradeSignalsTable}`}>
+                                    <TableHead className={styles.themedHeader}>
                                         <TableRow>
-                                            <TableCell>Time</TableCell>
-                                            <TableCell>Instrument</TableCell>
-                                            <TableCell>Direction</TableCell>
-                                            <TableCell align="right">Confidence</TableCell>
+                                            <TableCell className={styles.themedCol}>Time</TableCell>
+                                            <TableCell className={styles.themedCol}>Instrument</TableCell>
+                                            <TableCell className={styles.themedCol}>Direction</TableCell>
+                                            <TableCell className={styles.themedCol} align="right">Confidence</TableCell>
                                         </TableRow>
                                     </TableHead>
                                     <TableBody>
                                         {this.props.tradeSignals.map(signal => (
                                             <TableRow key={signal.confidence}>
-                                                <TableCell>{signal.time.toString()}</TableCell>
-                                                <TableCell>{signal.instrument}</TableCell>
-                                                <TableCell>{signal.direction}</TableCell>
-                                                <TableCell align="right">{signal.confidence}</TableCell>
+                                                <TableCell className={styles.themedCol}>{signal.time.toString()}</TableCell>
+                                                <TableCell className={styles.themedCol}>{signal.instrument}</TableCell>
+                                                <TableCell className={styles.themedCol}>{signal.direction}</TableCell>
+                                                <TableCell className={styles.themedCol} align="right">{signal.confidence}</TableCell>
                                             </TableRow>        
                                         ))}
                                     </TableBody>

@@ -10,11 +10,13 @@ import { NotificationType } from '~common/types/notification';
 import { IRootState, store } from '~store';
 import { notificationActions } from './notificationActions';
 
+const unknownError = 'An unkown error happened';
+
 const loginFailedNotificationEpic: Epic<IRootAction, IRootAction, IRootState> = (action$) => action$.pipe(
     ofType(loginActionNames.LOGIN.ERROR),
     tap((error) => store.dispatch(notificationActions.add({
         id: generateRandomId(),
-        text: (error.payload as IProblemDetails).detail,
+        text: (error?.payload as IProblemDetails) == null ? unknownError : (error.payload as IProblemDetails).detail ?? (error.payload as IProblemDetails).title,
         type: NotificationType.Error
     }))),
     ignoreElements()
@@ -24,7 +26,7 @@ const registerFailedNotificationEpic: Epic<IRootAction, IRootAction, IRootState>
     ofType(loginActionNames.REGISTER.ERROR),
     tap((error) => store.dispatch(notificationActions.add({
         id: generateRandomId(),
-        text: (error.payload as IProblemDetails).detail,
+        text: (error?.payload as IProblemDetails) == null ? unknownError : (error.payload as IProblemDetails).detail ?? (error.payload as IProblemDetails).title,
         type: NotificationType.Error
     }))),
     ignoreElements()

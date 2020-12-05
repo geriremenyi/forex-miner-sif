@@ -40,7 +40,7 @@ export class HttpApiClient implements IApiClient {
      */
     public login(auth: IUserLogin): Observable<ILoggedInUser> {
         return this.httpClient.post<IUserLogin, ILoggedInUser>(
-            `${this.getEndpoint('users/authenticate')}`,
+            `${this.getEndpoint('users/login')}`,
             auth
         );
     }
@@ -90,7 +90,7 @@ export class HttpApiClient implements IApiClient {
      * @returns {@link https://rxjs-dev.firebaseapp.com/guide/observable | Observable} which emmits the array of connections on successful get.
      */
     getConnections(): Observable<IConnection[]> {
-        return this.httpClient.get<IConnection[]>(`${this.getEndpoint('/users/me/connections')}`);
+        return this.httpClient.get<IConnection[]>(`${this.getEndpoint('users/me/connections')}`);
     }
 
     /**
@@ -99,7 +99,7 @@ export class HttpApiClient implements IApiClient {
      * @returns {@link https://rxjs-dev.firebaseapp.com/guide/observable | Observable} which emmits the array of trade signals on successful get.
      */
     getTradeSignals(): Observable<ITradeSignal[]> {
-        return this.httpClient.get<ITradeSignal[]>(`${this.getEndpoint('/users/me/connections/trade-signals')}`);
+        return this.httpClient.get<ITradeSignal[]>(`${this.getEndpoint('users/me/connections/trade-signals')}`);
     }
 
     /**

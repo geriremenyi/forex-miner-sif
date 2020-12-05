@@ -1,8 +1,11 @@
+// Library dependencies
 import React from 'react';
 import Particles from 'react-particles-js';
 
+// Local dependencies
 import { IGraphProps } from '.';
 
+// SASS module
 import styles from './Graph.module.scss';
 
 /**
@@ -20,7 +23,6 @@ export class Graph extends React.Component<IGraphProps> {
     public render(): React.ReactNode {
         return (
             <div className={styles.graphWrapper}>
-                <div className={styles.particlesColor} />
                 <Particles width='100%' height='100%' className={styles.particlesWrapper} params={{
                     particles: {
                         number: {

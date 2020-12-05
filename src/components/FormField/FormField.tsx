@@ -1,11 +1,13 @@
+// Library dependencies
 import React from 'react';
 import { IconContext } from 'react-icons';
 import { BsFillEyeFill, BsFillEyeSlashFill } from 'react-icons/bs';
 
+// Local dependencies
 import { generateRandomId } from '~common/functions/misc';
-
 import { FormFieldType, IFormFieldProps, IFormFieldState } from '.';
 
+// SASS module
 import formFieldStyles from './FormField.module.scss';
 
 /**
