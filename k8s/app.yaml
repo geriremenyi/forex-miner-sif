@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: forex-miner-sif
-          image: ghcr.io/geriremenyi/forex-miner-sif:latest
+          image: ghcr.io/geriremenyi/forex-miner-sif:0.0.1
           ports:
             - containerPort: 80
       imagePullSecrets:
